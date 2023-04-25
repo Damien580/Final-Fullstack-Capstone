@@ -1,7 +1,6 @@
 import os
 import json
-from random import choice, randint
-from datetime import datetime
+
 
 import crud
 import model
@@ -23,4 +22,8 @@ users_in_db = []
 for user in user_data:
     username, user_bio, user_email = (user["username"], user["user_bio"], user["user_email"])
     
-    db_user = crud.create_user(username, user_bio, )
+    db_user = crud.create_user(username, user_bio, user_email)
+    users_in_db.append(db_user)
+    
+model.db.session.add_all(users_in_db)
+model.db.sesion.commit()

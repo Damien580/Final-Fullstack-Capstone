@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, flash, session, redirect, url
 from model import User, connect_to_db, db
 import crud
 from jinja2 import StrictUndefined
-from forms import NewUserForm
+from forms import NewUserForm, SearchForm, AddPhoto
 
 app = Flask(__name__)
 app.secret_key = "DatingAppForMyCapstone"
@@ -13,14 +13,26 @@ def home():
     return render_template("home.html")
 
 @app.route("/users")
-def all_users():
-    users = crud.get_users()
-    return render_template("all_users.html", users = users)
+def all_users(is_female):
+    search_form = SearchForm()
+    
+    if search_form.validate_on_submit():
+        is_female = search_form.is_female.data == 'True'
+        users = crud.get_users_by_sex(is_female)
+        if is_female:
+            users = [user for user in users if user.is_female]
+        else:
+            users = [user for user in users if not user.is_female]
+    else:
+        users = crud.get_all_users()
+
+    return render_template('all_users.html', users = users, search_form = search_form)
 
 @app.route("/users/<user_id>")
 def show_user(user_id):
     user = crud.get_user_by_user_id(user_id)
-    return render_template("user_details.html", user = user)
+    pictures = crud.get_all_pics()
+    return render_template("profile.html", user = user, pictures = pictures )
   
 @app.route("/profile")
 def profile(user_id):

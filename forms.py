@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField, BooleanField, SelectField
-from wtforms.validators import DataRequired, Length, Regexp
+from wtforms.validators import DataRequired, Length, RadioField, Regexp
 
 class NewUserForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=4, max=255)])
@@ -14,6 +14,5 @@ class AddPhoto(FlaskForm):
     comment = TextAreaField('Comments')
     submit = SubmitField('Add')
     
-    
-
-    
+class SearchForm(FlaskForm):
+    is_female = RadioField('Gender', choices=[('True', 'Female'), ('False', 'Male')], validators=[DataRequired()])

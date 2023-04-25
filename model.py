@@ -11,6 +11,7 @@ class User(db.Model):
     password = db.Column(db.String, nullable=False)
     user_bio = db.Column(db.String, nullable=True)
     user_email = db.Column(db.String, nullable=False, )
+    is_female = db.Column(db.Boolean, nullable=False)
     
     def __init__(self, username, password, email):
         self.username = username

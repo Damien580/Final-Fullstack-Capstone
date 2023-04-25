@@ -23,3 +23,4 @@ users_in_db = []
 for user in user_data:
     username, user_bio, user_email = (user["username"], user["user_bio"], user["user_email"])
     
+    db_user = crud.create_user(username, user_bio, )

@@ -6,7 +6,7 @@ db = SQLAlchemy()
 class User(db.Model):
     __tablename__ = "users"
     
-    user_id = db.Colulmn(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String, unique=True, nullable=False)
     password = db.Column(db.String, nullable=False)
     user_bio = db.Column(db.String, nullable=True)
@@ -24,8 +24,8 @@ class Picture(db.Model):
     __tablename__ = "pictures"
     
     pic_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
-    pic_url = db.column(db.String, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
+    pic_url = db.Column(db.String, nullable=False)
     
     user = db.relationship("User", backref="pictures")
     
@@ -35,8 +35,8 @@ class Picture(db.Model):
 class Conversation(db.Model):
     __tablename__ = "conversations"
     
-    convo_id = db.column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
+    convo_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
     other_user = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
 
     user = db.relationship("User", backref="conversations")
@@ -61,9 +61,9 @@ class User_Match(db.Model):
     
     match_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     likes = db.Column(db.Boolean)
-    user_id = db.column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
     liked = db.Column(db.Boolean)
-    other_user = db.column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
+    other_user = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
 
 def connect_to_db(app):
     app.config["SQLALCHEMY_DATABASE_URI"] = os.environ["POSTGRES_URI"]

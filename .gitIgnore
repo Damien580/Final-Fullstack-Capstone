@@ -1,3 +1,4 @@
 /data/URI.sh
-venv
-.venv
+/venv
+/.venv
+/__pycache__

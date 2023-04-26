@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block head %}
+<div class="login">
+    <p>Log In:</p>
+    <form action="/login" method="POST">
+        <p>Username<input type="text" name="username"></p>
+        <p>Password<input type="text" name="password"></p>
+        <p><input type="submit"></p>
+    </form>
+    <br>
+    <form action="/logout" method="GET">
+        <button type="submit">Log Out</button>
+    </form>
+</div>
+{% endblock%}
+
+{% block body %}
+<div class="form-container">
+    <p>Create Account:</p>
+    <form action="{{ url_for('new_user') }}" method="POST">
+        {{ new_user_form.csrf_token() }}
+        {{ new_user_form.username.label }}
+        {{ new_user_form.username }}
+        {{ new_user_form.password.label}}
+        {{ new_user_form.password }}
+        {{ new_user_form.user_bio.label }}
+        {{ new_user_form.user_bio }}
+        {{ new_user_form.user_email.label }}
+        {{ new_user_form.user_email }}
+        {{ new_user_form.is_female.label }}
+        {{ new_user_form.is_female }}
+        {{ new_user_form.submit }}
+    </form>
+    {% for message in get_flashed_messages() %}
+    <p>{{ message }}</p>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block foot %}
+{% endblock %}

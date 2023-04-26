@@ -4,55 +4,55 @@
         "password": "Coach",
         "user_bio": "Hi, my name is Brian McGurk. I'm 37 yrs old, and I love air hockey and pickles. One time I went to Paris and ordered French Fries as a joke. No one laughed. I am so lonely, please go out with me.",
         "user_email": "2hotMcGurk@yahoogle.com",
-        "is_female": "False"
+        "is_female": false
     },
     {
         "username": "Canadian_Bacon69",
         "password": "Ham",
         "user_bio": "Hey, eh. I'm Zachariah. Why not join me for a LaBatt's Blue and some Moose videos I got on my last trip out to the great white north. I'm a member of the RCMP and would love to tell ya all aboot it, don't ya know. I'm a snuggler at heart and am looking for my Mama Bear!",
         "user_email": "GoodLuckCanuck@goohoo.org",
-        "is_female": "False"
+        "is_female": false
     },
     {
         "username": "Buck_Wylde",
         "password": "Shalom",
         "user_bio": "Hey there, sweet thang! You know why they calls me Buck Wylde? 'Cause I gets Buck Wild. Lets make some magic tonight. No names, no regrets. I'm into tattoos and daddy issues. Ex-exotic dancer a plus. Not that picky. ",
         "user_email": "Rabbi.Ezekiel.Sheinfeld@TempleBethIsrael.org",
-        "is_female": "False"
+        "is_female": false
     },
     {
         "username": "Swashbucklin'_Sam",
         "password": "Boat",
         "user_bio": "Ahoy, matey. Batton the hatches and prepare for a night of salt water seduction. First, a lovely early dinner at Captain D's fried fish and po'boy stand, followed by a moonlit stroll on the beach. As the evening wanes, we can retire to my stateroom for a bit of parlay.",
         "user_email": "HoldFast@USNavy.gov",
-        "is_female": "False"
+        "is_female": false
     },
     {
         "username": "NiceGal37",
         "password": "Polite",
         "user_bio": "Hi, my name is Davina. I'm 32, 6'1', 187 lbs. I really love a guy with manners. Whether at the balet or my moms house for dinner, prim and proper is the way to be. My hobbies include writing thank you cards, writing you're welcome cards to thank you cards I have received, and making friendship bracelets for orphaned children in Liberia.",
         "user_email": "Elbows-off-the-Table@mannerisms.com",
-        "is_female": "True"
+        "is_female": true
     },
     {
         "username": "Lucky_Linda_97",
         "password": "OhYeah!",
         "user_bio": "Yo, Linda's my name, and gambling's my game. You feelin' lucky? Well, come over and ante up!",
         "user_email": "Pokerintherear@Gamblers_Anonymous.org",
-        "is_female": "True"
+        "is_female": true
     },
     {
         "username": "Cry_me_a_river",
         "password": "BooHoo",
         "user_bio": "I'm Bridgette Sadler. My favorite thing is watching sad 80's movies. Come cry with me, mope with me, weep and moan with me. It'll be a blast.",
         "user_email": "Why_God_Why@JonCryerFanClub.net",
-        "is_female": "True"
+        "is_female": true
     },
     {
         "username": "Debbie",
         "password": "SnackCakes",
         "user_bio": "HoHo there, it's me, Debbie. I'm not so little anymore, but my cupcakes are still the best around. Let me be your late night snack, big guy.",
         "user_email": "Thirsty@kindahungry.com",
-        "is_female": "True"
+        "is_female": true
     }
 ]

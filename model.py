@@ -9,24 +9,26 @@ class User(db.Model):
     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String, unique=True, nullable=False)
     password = db.Column(db.String, nullable=False)
-    user_bio = db.Column(db.String, nullable=True)
+    user_bio = db.Column(db.Text, nullable=True)
     user_email = db.Column(db.String, nullable=False, )
     is_female = db.Column(db.Boolean, nullable=False)
     
-    def __init__(self, username, password, email):
+    def __init__(self, username, password, user_bio, user_email, is_female):
         self.username = username
         self.password = password
-        self.email = email
+        self.user_bio = user_bio
+        self.user_email = user_email
+        self.is_female = is_female
     def __repr__(self):
-        return f"<User: ID={self.user_id} Username={self.username} Email={self.email}>"
+        return f"<User: ID={self.user_id} Username={self.username} Email={self.user_email}>"
 
 class Picture(db.Model):
     __tablename__ = "pictures"
     
     pic_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
+    username = db.Column(db.Integer, db.ForeignKey("users.username"), nullable=False)
     pic_url = db.Column(db.String, nullable=False)
-    
+    comment = db.Column(db.Text)
     user = db.relationship("User", backref="pictures")
     
     def __repr__(self):
@@ -39,17 +41,17 @@ class Conversation(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
     other_user = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
 
-    user = db.relationship("User", backref="conversations")
+    user = db.relationship("User", foreign_keys=[user_id],  backref="conversations")
     
     def __repr__(self):
-        return f"<Conversation between {self.user_id} and {self.other_user}"
+        return f"<Conversation between {self.user_id} and {self.other_user}>"
     
-class Messages(db.Model):
+class Message(db.Model):
     __tablename__ = "messages"
     
     message_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     convo_id = db.Column(db.Integer, db.ForeignKey("conversations.convo_id"), nullable=False)
-    message = db.Column(db.String, nullable=False)
+    message = db.Column(db.Text, nullable=False)
     
     convo = db.relationship("Conversation", backref="messages")
     

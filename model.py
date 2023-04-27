@@ -1,9 +1,9 @@
 import os
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_login import UserMixin
 db = SQLAlchemy()
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__ = "users"
     
     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -11,7 +11,7 @@ class User(db.Model):
     password = db.Column(db.String, nullable=False)
     user_bio = db.Column(db.Text, nullable=True)
     user_email = db.Column(db.String, nullable=False, )
-    is_female = db.Column(db.Boolean, nullable=False)
+    is_female = db.Column(db.String, nullable=False)
     
     def __init__(self, username, password, user_bio, user_email, is_female):
         self.username = username
@@ -19,17 +19,32 @@ class User(db.Model):
         self.user_bio = user_bio
         self.user_email = user_email
         self.is_female = is_female
+    
     def __repr__(self):
         return f"<User: ID={self.user_id} Username={self.username} Email={self.user_email}>"
+    
+    def get_id(self):
+        return str(self.user_id)
+    
+    @property
+    def is_authenticated(self):
+        return True
+    
+    @property
+    def is_active(self):
+        return True
+    
+    @property
+    def is_anonymous(self):
+        return False
 
 class Picture(db.Model):
     __tablename__ = "pictures"
     
     pic_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    username = db.Column(db.Integer, db.ForeignKey("users.username"), nullable=False)
     pic_url = db.Column(db.String, nullable=False)
     comment = db.Column(db.Text)
-    user = db.relationship("User", backref="pictures")
+    user_id= db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
     
     def __repr__(self):
         return f"<Picture: pic_id={self.pic_id}"

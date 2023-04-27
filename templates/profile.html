@@ -1,11 +1,29 @@
 {% extends "base.html" %}
 
 {% block head %}
-
+    {% if profile %}
+        <h2>{{ profile.username }}</h2>
+    {% endif %}
 {% endblock %}
 
 {% block body %}
+    {% if pictures %}
+        <ul>
+        {% for pic in pictures %}
+            <li>
+                <img src="{{ pic.url }}" alt="Picture">
+                <p>{{ pic.comment }}</p>
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    <form method="POST" action="{{ url_for('profile') }}">
+        {{ add_photo_form.hidden_tag() }}
+        {{ add_photo_form.url.label }} {{ add_photo_form.url }}
+        {{ add_photo_form.comment.label }} {{ add_photo_form.comment }}
+        {{ add_photo_form.submit() }}
+    </form>
 {% endblock %}
 
-{%block foot %}
+{% block foot %}
 {% endblock %}

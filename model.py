@@ -22,21 +22,6 @@ class User(db.Model, UserMixin):
     
     def __repr__(self):
         return f"<User: ID={self.id} Username={self.username} Email={self.user_email}>"
-    
-    def get_id(self):
-        return str(self.id)
-    
-    @property
-    def is_authenticated(self):
-        return True
-    
-    @property
-    def is_active(self):
-        return True
-    
-    @property
-    def is_anonymous(self):
-        return False
 
 class Picture(db.Model):
     __tablename__ = "pictures"

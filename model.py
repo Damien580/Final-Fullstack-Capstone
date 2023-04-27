@@ -6,12 +6,12 @@ db = SQLAlchemy()
 class User(db.Model, UserMixin):
     __tablename__ = "users"
     
-    user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String, unique=True, nullable=False)
     password = db.Column(db.String, nullable=False)
     user_bio = db.Column(db.Text, nullable=True)
-    user_email = db.Column(db.String, nullable=False, )
-    is_female = db.Column(db.String, nullable=False)
+    user_email = db.Column(db.String, nullable=False, default="")
+    is_female = db.Column(db.String, nullable=False, default="Unknown")
     
     def __init__(self, username, password, user_bio, user_email, is_female):
         self.username = username
@@ -21,10 +21,10 @@ class User(db.Model, UserMixin):
         self.is_female = is_female
     
     def __repr__(self):
-        return f"<User: ID={self.user_id} Username={self.username} Email={self.user_email}>"
+        return f"<User: ID={self.id} Username={self.username} Email={self.user_email}>"
     
     def get_id(self):
-        return str(self.user_id)
+        return str(self.id)
     
     @property
     def is_authenticated(self):
@@ -44,22 +44,23 @@ class Picture(db.Model):
     pic_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     pic_url = db.Column(db.String, nullable=False)
     comment = db.Column(db.Text)
-    user_id= db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
+    user_id= db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     
     def __repr__(self):
         return f"<Picture: pic_id={self.pic_id}"
 
 class Conversation(db.Model):
-    __tablename__ = "conversations"
-    
-    convo_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
-    other_user = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
+    __tablename__ = 'conversations'
 
-    user = db.relationship("User", foreign_keys=[user_id],  backref="conversations")
+    convo_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    user1_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    user2_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+    user1 = db.relationship('User', foreign_keys=[user1_id])
+    user2 = db.relationship('User', foreign_keys=[user2_id])
     
     def __repr__(self):
-        return f"<Conversation between {self.user_id} and {self.other_user}>"
+        return f"<Conversation between {self.id} and {self.other_user}>"
     
 class Message(db.Model):
     __tablename__ = "messages"
@@ -78,9 +79,9 @@ class User_Match(db.Model):
     
     match_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     likes = db.Column(db.Boolean)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     liked = db.Column(db.Boolean)
-    other_user = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
+    other_user = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
 def connect_to_db(app):
     app.config["SQLALCHEMY_DATABASE_URI"] = os.environ["POSTGRES_URI"]

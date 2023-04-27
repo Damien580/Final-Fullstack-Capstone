@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.secret_key = "DatingAppForMyCapstone"
 app.jinja_env.undefined = StrictUndefined
 
-login_manager = LoginManager(app)
+
 
 @app.route("/")
 def home():
@@ -23,10 +23,9 @@ def process_login():
     user= crud.get_user_by_username(username) 
     
     if user and user.password == password:
-        user_obj = User(user.id, user.username, user.password)
-        login_user(user_obj)
+        session["username"] = user.username 
         flash(f"Welcome back, {user.username}!")
-        return redirect(url_for("profile"))
+        return render_template("/profile.html")
     else:
         flash("The email or password you entered is incorrect. Please try again.")
         return redirect("/")
@@ -44,7 +43,6 @@ def logout():
         return redirect("/login")
 
 @app.route("/profile", methods=["GET", "POST"])
-@login_required
 def profile():
     logged_in_username = session.get("user.username")
     add_photo_form = AddPhotoForm()
@@ -74,7 +72,6 @@ def profile():
         return render_template("profile.html", profile=profile, pictures=pictures, add_photo_form=add_photo_form)
 
 @app.route("/new_photo")
-@login_required
 def new_photo():
     logged_in_username = session.get("user.username")
     new_photo_form = AddPhotoForm()
@@ -93,7 +90,6 @@ def new_photo():
             return render_template("/profile", url=url, username=username, comment=comment)
 
 @app.route("/users")
-@login_required
 def all_users():
     search_form = SearchForm()
     is_female = request.args.get('is_female') == 'True' if request.args.get('is_female') else None
@@ -110,7 +106,6 @@ def all_users():
     return render_template('all_users.html', users = users, is_female = is_female)
 
 @app.route("/users/<user_id>")
-@login_required
 def show_user(user_id):
     user = crud.get_user_by_user_id(user_id)
     pictures = crud.get_all_pics()
@@ -137,7 +132,6 @@ def new_user():
         return redirect("/")
 
 @app.route("/conversation")
-@login_required
 def show_convo():
     logged_in_username = session.get("user.username")
         
@@ -147,9 +141,7 @@ def show_convo():
         messages = crud.get_messages_by_convo()
         return render_template("convo.html", messages = messages)
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
+
 
 
 

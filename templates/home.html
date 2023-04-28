@@ -4,12 +4,17 @@
 <div class="login">
     <p>Log In:</p>
     <form action="/login" method="POST">
-        <p>Username<input type="text" name="username"></p>
-        <p>Password<input type="text" name="password"></p>
-        <p><input type="submit"></p>
+        {{ login_form.csrf_token() }}
+        {{ login_form.username.label }}<br>
+        {{ login_form.username }}<br><br>
+        {{ login_form.password.label }}<br>
+        {{ login_form.password }}<br><br>
+        {{ login_form.remember_me.label }}
+        {{ login_form.remember_me }}<br><br>
+        {{ login_form.submit }}
     </form>
     <br>
-    <form action="/logout" method="GET">
+    <form action="/logout" method="POST">
         <button type="submit">Log Out</button>
     </form>
 </div>

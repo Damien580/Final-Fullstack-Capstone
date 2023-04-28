@@ -10,8 +10,8 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String, unique=True, nullable=False)
     password = db.Column(db.String, nullable=False)
     user_bio = db.Column(db.Text, nullable=True)
-    user_email = db.Column(db.String, nullable=False, default="")
-    is_female = db.Column(db.String, nullable=False, default="Unknown")
+    user_email = db.Column(db.String, nullable=False)
+    is_female = db.Column(db.Boolean, nullable=False)
     
     def __init__(self, username, password, user_bio, user_email, is_female):
         self.username = username

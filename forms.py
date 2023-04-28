@@ -1,8 +1,13 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, TextAreaField, BooleanField, SelectField, HiddenField
+from wtforms import StringField, SubmitField, TextAreaField, BooleanField, SelectField, HiddenField, PasswordField
 from wtforms.validators import DataRequired, Length, Regexp
 from wtforms.fields import RadioField
 
+class LoginForm(FlaskForm):
+    username = StringField("username")
+    password = PasswordField("password")
+    remember_me = BooleanField("remember me")
+    submit = SubmitField("submit")
 
 class NewUserForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=4, max=255)])

@@ -2,38 +2,45 @@ from flask import Flask, render_template, request, flash, session, redirect, url
 from model import User, connect_to_db, db, Picture, Message, Conversation
 import crud
 from jinja2 import StrictUndefined
-from forms import NewUserForm, SearchForm, AddPhotoForm
+from forms import NewUserForm, SearchForm, AddPhotoForm, LoginForm
 from flask_login import LoginManager, login_user, UserMixin, login_required, current_user
 
 app = Flask(__name__)
 app.secret_key = "DatingAppForMyCapstone"
-app.jinja_env.undefined = StrictUndefined
 
+login_manager = LoginManager()
+login_manager.init_app(app)
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
 
 @app.route("/")
 def home():
     new_user_form = NewUserForm()
-    return render_template("home.html", new_user_form=new_user_form)
+    login_form = LoginForm()
+    return render_template("home.html", new_user_form=new_user_form, login_form=login_form)
 
-@app.route("/login", methods=['GET', 'POST'])
-def process_login():
-    username = request.form.get("username") 
-    password = request.form.get("password")
-    user= crud.get_user_by_username(username) 
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    login_form = LoginForm(request.form)
+    new_user_form = NewUserForm()
     
-    if user and user.password == password:
-        pictures = crud.get_user_pics(user.id)   
-        session["username"] = user.username 
-        flash(f"Welcome back, {user.username}!")
-        add_photo_form = AddPhotoForm()
-        return render_template("/profile.html",pictures=pictures, profile=user, add_photo_form=add_photo_form)
-    
-    else:
-        flash("The email or password you entered is incorrect. Please try again.")
-        return redirect("/")
-    
-    
+    if login_form.validate_on_submit():
+
+        username = login_form.username.data
+        password = login_form.password.data
+
+        user = User.query.filter_by(username=username).first()
+
+        if user:
+            if user.password == password:
+                login_user(user)
+                flash("logged in")
+                
+        flash("Either the password or username is incorrect.")
+
+    return render_template("home.html", login_form=login_form, new_user_form=new_user_form)
         
 @app.route("/logout")
 def logout():
@@ -48,36 +55,28 @@ def logout():
         return redirect("/")
 
 @app.route("/profile", methods=["GET", "POST"])
-# @login_required
+@login_required
 def profile():
-    logged_in_username = session.get("user.username")
     add_photo_form = AddPhotoForm()
-    profile = None
-    pictures = None
+    profile = current_user
+    pictures = crud.get_user_pics(profile.id)
 
-    if logged_in_username is None:
-        flash("You are not logged in!")
-        return redirect(url_for("home"))
+    if request.method == "GET":
+        conversations = crud.get_all_convo()
+        return render_template("profile.html", profile=profile, pictures=pictures, conversations=conversations, add_photo_form=add_photo_form)
+    elif add_photo_form.validate_on_submit():
+        pic_url = add_photo_form.url.data
+        comment = add_photo_form.comment.data
+        user_id = current_user.id 
+        new_pic = Picture(pic_url=pic_url, comment=comment, user_id=user_id)
+        db.session.add(new_pic)
+        db.session.commit()
+        flash("Picture added!")
+        return redirect(url_for("profile"))
     else:
-        if request.method == "GET":
-            profile = crud.get_user_by_username(logged_in_username)
-            pictures = crud.get_user_pics(profile.id)
-            conversations = crud.get_all_convo()
-            return render_template("profile.html", profile=profile, pictures=pictures, conversations=conversations)
-        else:
-            if add_photo_form.validate_on_submit():
-                pic_url = add_photo_form.url.data
-                comment = add_photo_form.comment.data
-                user_id = current_user.id 
-                new_pic = Picture(pic_url=pic_url,pictures=pictures, comment=comment, user_id=user_id)  
-                with app.app_context():
-                    db.session.add(new_pic)
-                    db.session.commit()
-                return render_template("profile.html", pic_url=pic_url, comment=comment, pictures=pictures)
-            else:
-                flash("Picture not added!")
-                return render_template("profile.html", profile=profile, pictures=pictures, add_photo_form=add_photo_form)
-    return redirect("/home")
+        flash("Picture not added!")
+        return render_template("profile.html", profile=profile, pictures=pictures, add_photo_form=add_photo_form)
+
 @app.route("/new_photo")
 def new_photo():
     logged_in_username = session.get("user.username")

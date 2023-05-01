@@ -1,26 +1,11 @@
 {% extends "base.html" %}
 
 {% block head %}
-    <h1>User Info:</h1>
-        {% if user %}
-            <div class="user_info">
-                <p>Name: {{ user.username }}</p>
-                <p>Email: {{ user.user_email }}</p>
-                <p>Age: {{ user.user_bio}}</p>
-            </div>
-        {% else %}
-            <p>User not found.</p>
-        {% endif %}
-        {% for pic in pictures %}
-        <li>
-            <img src="{{ pic.pic_url }}" alt="Picture">
-            <p>{{ pic.comment }}</p>
-        </li>
-    {% endfor %}
+  
 {% endblock %}
 
 {% block body %}
-    
+
 {% endblock %}
 
 {% block foot %}

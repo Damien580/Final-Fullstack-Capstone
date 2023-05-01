@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request, flash, session, redirect, url_for
 from model import User, connect_to_db, db, Picture, Message, Conversation
+from forms import NewUserForm, SearchForm, AddPhotoForm, LoginForm, MessageForm
+from flask_login import LoginManager, login_user, login_required, current_user, logout_user
+
 import crud
-from jinja2 import StrictUndefined
-from forms import NewUserForm, SearchForm, AddPhotoForm, LoginForm, FlaskForm
-from flask_login import LoginManager, login_user, UserMixin, login_required, current_user, logout_user
 
 app = Flask(__name__)
 app.secret_key = "DatingAppForMyCapstone"
@@ -75,7 +75,6 @@ def logout():
 def profile():
     add_photo_form = AddPhotoForm()
     profile = current_user
-    print(profile.id)
     pictures = crud.get_user_pics(profile.id)
     conversations = crud.get_all_convo()
     
@@ -113,18 +112,16 @@ def all_users():
 @app.route("/users/<int:id>")
 @login_required
 def show_user(id):
+    profile = current_user
+    message_form = MessageForm()
     user = crud.get_user_by_user_id(id)
     pictures = crud.get_user_pics(id)
-    return render_template("user.html", user=user, pictures=pictures)
-
-@app.route("/conversation")
-def show_convo():
-        
-    if logged_in_username is None:
-        flash("You are not logged in!!!")
-    else:
-        messages = crud.get_messages_by_convo()
-        return render_template("convo.html", messages = messages)
+    
+    if message_form.validate_on_submit():
+        if request.method == "POST":
+            convo = request.conversations.get("user1_id")
+            messages = request.messages.filter_by('convo_id')
+    return render_template("user.html", user=user, pictures=pictures, profile=profile, message_form=message_form)
 
 @app.route('/delete_picture/<int:pic_id>', methods=['POST'])
 @login_required
@@ -139,6 +136,9 @@ def delete_picture(pic_id):
     return redirect(url_for('profile'))
 
 
+
+            
+            
 
 
 

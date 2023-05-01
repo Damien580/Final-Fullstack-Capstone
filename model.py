@@ -1,6 +1,7 @@
 import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
+from datetime import datetime
 db = SQLAlchemy()
 
 class User(db.Model, UserMixin):
@@ -51,7 +52,9 @@ class Message(db.Model):
     __tablename__ = "messages"
     
     message_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    convo_id = db.Column(db.Integer, db.ForeignKey("conversations.convo_id"), nullable=False)
+    sender_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    recipient_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    date_time = db.Column(db.DateTime, default=datetime.utcnow)
     message = db.Column(db.Text, nullable=False)
     
     convo = db.relationship("Conversation", backref="messages")

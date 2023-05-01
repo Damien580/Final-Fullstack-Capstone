@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, TextAreaField, BooleanField, SelectField, HiddenField, PasswordField
-from wtforms.validators import DataRequired, Length, Regexp
+from wtforms import StringField, SubmitField, TextAreaField, BooleanField, HiddenField, PasswordField, DateTimeField
+from wtforms.validators import DataRequired, Length
 from wtforms.fields import RadioField
 
 class LoginForm(FlaskForm):
@@ -26,3 +26,9 @@ class AddPhotoForm(FlaskForm):
     
 class SearchForm(FlaskForm):
     is_female = RadioField('Gender', choices=[('True', 'Female'), ('False', 'Male')], validators=[DataRequired()])
+    
+class MessageForm(FlaskForm):
+    recipient = HiddenField('Recipient', validators=[DataRequired()])
+    message = TextAreaField('Message')
+    submit = SubmitField('Submit')
+    

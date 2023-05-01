@@ -28,7 +28,8 @@ class SearchForm(FlaskForm):
     is_female = RadioField('Gender', choices=[('True', 'Female'), ('False', 'Male')], validators=[DataRequired()])
     
 class MessageForm(FlaskForm):
-    recipient = HiddenField('Recipient', validators=[DataRequired()])
-    message = TextAreaField('Message')
+    recipient = StringField('Recipient', validators=[DataRequired()])
+    message = TextAreaField('Message', validators=[DataRequired()])
+    date_time = DateTimeField('datetime()', validators=[DataRequired()])
     submit = SubmitField('Submit')
     

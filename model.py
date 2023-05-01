@@ -52,12 +52,13 @@ class Message(db.Model):
     __tablename__ = "messages"
     
     message_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    sender_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
-    recipient_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    sender_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    recipient_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     date_time = db.Column(db.DateTime, default=datetime.utcnow)
     message = db.Column(db.Text, nullable=False)
     
-    convo = db.relationship("Conversation", backref="messages")
+    sender = db.relationship('User', foreign_keys=[sender_id])
+    recipient = db.relationship('User', foreign_keys=[recipient_id])
     
     def __repr__(self):
         return f"<Message={self.message_id}"

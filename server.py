@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, flash, session, redirect, url
 from model import User, connect_to_db, db, Picture, Message, Conversation
 from forms import NewUserForm, SearchForm, AddPhotoForm, LoginForm, MessageForm
 from flask_login import LoginManager, login_user, login_required, current_user, logout_user
-
+from datetime import datetime
 import crud
 
 app = Flask(__name__)
@@ -112,16 +112,9 @@ def all_users():
 @app.route("/users/<int:id>")
 @login_required
 def show_user(id):
-    profile = current_user
-    message_form = MessageForm()
     user = crud.get_user_by_user_id(id)
     pictures = crud.get_user_pics(id)
-    
-    if message_form.validate_on_submit():
-        if request.method == "POST":
-            convo = request.conversations.get("user1_id")
-            messages = request.messages.filter_by('convo_id')
-    return render_template("user.html", user=user, pictures=pictures, profile=profile, message_form=message_form)
+    return render_template("user.html", user=user, pictures=pictures)
 
 @app.route('/delete_picture/<int:pic_id>', methods=['POST'])
 @login_required
@@ -135,10 +128,26 @@ def delete_picture(pic_id):
         flash('Picture not found or unauthorized to delete.')
     return redirect(url_for('profile'))
 
+@app.route('/messages', methods=['GET', 'POST'])
+@login_required
+def messages():
+    message_form = MessageForm()
 
+    if message_form.validate_on_submit():
+        sender_id = current_user.id
+        recipient_id = message_form.recipient_id.data
+        date_time = datetime.utcnow()
+        body = message_form.body.data
+        new_message = Message(sender_id=sender_id, recipient_id=recipient_id, date_time=date_time, body=body)
+        db.session.add(new_message)
+        db.session.commit()
+        flash('Message sent!')
+        return redirect(url_for('messages'))
 
-            
-            
+    conversations = Conversation.query.filter(
+        (Conversation.user1_id == current_user.id)).all()
+
+    return render_template('messages.html', message_form=message_form, conversations=conversations, recipient_id=recipient_id, sender_id=sender_id, date_time=date_time, body=body, )
 
 
 

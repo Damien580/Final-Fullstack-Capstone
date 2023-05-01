@@ -58,15 +58,6 @@ class Message(db.Model):
     
     def __repr__(self):
         return f"<Message={self.message_id}"
-    
-class User_Match(db.Model):
-    __tablename__ = "user_matches"
-    
-    match_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    likes = db.Column(db.Boolean)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    liked = db.Column(db.Boolean)
-    other_user = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
 def connect_to_db(app):
     app.config["SQLALCHEMY_DATABASE_URI"] = os.environ["POSTGRES_URI"]

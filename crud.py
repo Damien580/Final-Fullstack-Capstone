@@ -1,4 +1,4 @@
-from model import db, User, Picture, Conversation, Message, User_Match, connect_to_db
+from model import db, User, Picture, Conversation, Message, connect_to_db
 
 def get_all_users():
     return User.query.all()
@@ -15,8 +15,8 @@ def get_user_by_user_id(id):
 def get_user_pics(id):
     return Picture.query.filter_by(user_id=id).all()
 
-def get_pic_by_id(id):
-    return Picture.query.filter_by(id=id).first()
+def get_pic_by_id(pic_id):
+    return Picture.query.filter_by(pic_id=pic_id).first()
 
 def create_user(username, password, user_bio, user_email, is_female):
     new_user = User(username=username, password=password, user_bio=user_bio, user_email=user_email, is_female=is_female)

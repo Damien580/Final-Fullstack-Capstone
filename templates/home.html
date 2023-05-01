@@ -14,7 +14,7 @@
         {{ login_form.submit }}
     </form>
     <br>
-    <form action="/logout" method="POST">
+    <form action="/logout">
         <button type="submit">Log Out</button>
     </form>
 </div>
@@ -25,10 +25,10 @@
     <p>Create Account:</p>
     <form action="{{ url_for('new_user') }}" method="POST">
         {{ new_user_form.csrf_token() }}
-        {{ new_user_form.username.label }}
-        {{ new_user_form.username }}
-        {{ new_user_form.password.label}}
-        {{ new_user_form.password }}
+        {{ new_user_form.new_username.label }}
+        {{ new_user_form.new_username }}
+        {{ new_user_form.new_password.label}}
+        {{ new_user_form.new_password }}
         {{ new_user_form.user_bio.label }}
         {{ new_user_form.user_bio }}
         {{ new_user_form.user_email.label }}

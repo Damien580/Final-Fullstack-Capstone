@@ -7,12 +7,27 @@
 {% endblock %}
 
 {% block body %}
+{% if conversations %}
+    <ul>
+        {% for convo in conversations %}
+            <li>
+                <div>
+                    <p><a href="">{{ user2.username }}</a></p>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
     {% if pictures %}
         <ul>
         {% for pic in pictures %}
             <li>
-                <img src="{{ pic.url }}" alt="Picture">
+                <img src="{{ pic.pic_url }}" alt="Picture">
                 <p>{{ pic.comment }}</p>
+                <form method="POST" action="{{ url_for('delete_picture', pic_id=pic.pic_id) }}">
+                    <input type="hidden" name="pic_id" value="{{ pic.pic_id }}">
+                    <button type="submit">Delete</button>
+                </form>
             </li>
         {% endfor %}
         </ul>
@@ -23,6 +38,9 @@
         {{ add_photo_form.comment.label }} {{ add_photo_form.comment }}
         {{ add_photo_form.submit() }}
     </form>
+    {% for message in get_flashed_messages() %}
+    <p>{{ message }}</p>
+    {% endfor %}
 {% endblock %}
 
 {% block foot %}

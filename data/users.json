@@ -54,5 +54,10 @@
         "user_bio": "HoHo there, it's me, Debbie. I'm not so little anymore, but my cupcakes are still the best around. Let me be your late night snack, big guy.",
         "user_email": "Thirsty@kindahungry.com",
         "is_female": true
+    },
+    {
+        "username": "Admin Damien Redd",
+        "password": "AdminDamienRedd",
+        "user_bio": "My name is Damien Redd, and I am the creator of this website. "
     }
 ]

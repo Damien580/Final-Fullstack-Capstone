@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block main %}
+    <div>
+        <div>
+            <h1>Login</h1>
+            <form action="{{ url_for('login') }}" method="POST">
+                {{ login_form.csrf_token() }}
+                {{ login_form.name.label }}
+                {{ login_form.name }}
+                {{ login_form.submit }}
+            </form>
+        </div>
+        <div>
+            <h1>Register</h1>
+            <form action="{{ url_for('register') }}" method="POST">
+                {{ register_form.csrf_token() }}
+                {{ register_form.name.label }}
+                {{ register_form.name }}
+                {{ register_form.submit }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

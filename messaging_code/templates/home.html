@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block main %}
+    <h1>Welcome {{ current_user.name }}!</h1>
+    <div>
+        {% for user in users %}
+            <div class="user-profile">
+                <h3>{{ user.name }}</h3>
+                <a type="button" href="{{ url_for('message_thread', user_id=user.id) }}">
+                    message
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

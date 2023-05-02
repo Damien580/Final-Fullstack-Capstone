@@ -1,2 +1,50 @@
 {% extends "base.html" %}
 
+{% block head %}
+<div class="form-container">
+    <h1>Send A Message:</h1>
+    <form class="message_form" action="{{ url_for('messages') }}" method="POST">
+        {{ message_form.hidden_tag() }}
+        {{ message_form.csrf_token() }}
+        {{ message_form.recipient.label }}{{ message_form.recipient }}
+        {{ message_form.message.label }}{{ message_form.message }}
+        {{ message_form.submit }}
+    </form>
+</div>
+{% endblock %}
+
+{% block body %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="message
+            {% if message.sender.id == current_user.id %}
+                sender
+            {% else %}
+                recipient
+            {% endif %}
+            ">
+            {% if message.sender.id == current_user.id %}
+                <p>From: You</p>
+            {% else %}
+                <p>From: {{ message.sender.username }}</p>
+            {% endif %}
+                <p>Message: {{ message.message }}</p>
+                <p>Sent: {{ message.get_time() }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    {% for message in get_flashed_messages() %}
+    <p>{{ message }}</p>
+    {% endfor %}
+    <br>
+    <div>
+        <h2>Reply:</h2>
+        <form action="{{ url_for('messages') }}" method="POST">
+            {{ message_form.recipient(value=user_id) }}
+            {{ message_form.message }}
+            {{ message_form.submit }}
+        </form>
+    </div>
+</body> 
+
+{% endblock %}

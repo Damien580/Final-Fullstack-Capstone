@@ -55,10 +55,13 @@ class Message(db.Model):
     sender_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     recipient_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     date_time = db.Column(db.DateTime, default=datetime.utcnow)
-    message = db.Column(db.Text, nullable=False)
+    message = db.Column(db.String, nullable=False)
     
     sender = db.relationship('User', foreign_keys=[sender_id])
     recipient = db.relationship('User', foreign_keys=[recipient_id])
+    
+    def get_time(self):
+        return self.timestamp.strftime("%b %d, %Y %H:%M:%S")
     
     def __repr__(self):
         return f"<Message={self.message_id}"

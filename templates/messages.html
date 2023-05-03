@@ -22,7 +22,7 @@
 <form method="GET">
     <label for="sender">Filter by Sender:</label>
     <select name="sender" id="sender">
-        <option value="">All</option>
+        
         {% for sender in senders %}
             <option value="{{ sender.id }}">{{ sender.username }}</option>
         {% endfor %}

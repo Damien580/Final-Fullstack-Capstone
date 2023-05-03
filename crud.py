@@ -29,11 +29,7 @@ def get_message_by_id(message_id):
     return Message.query.filter_by(message_id=message_id).first()
 
 def get_all_messages(sender_id=None, recipient_id=None):
-    if sender_id is not None and recipient_id is not None:
-        return Message.query.filter_by(sender_id=sender_id, recipient_id=recipient_id).all()
-    elif sender_id is not None:
-        return Message.query.filter_by(sender_id=sender_id, recipient_id=current_user.id).all()
-    elif recipient_id is not None:
-        return Message.query.filter_by(sender_id=current_user.id, recipient_id=recipient_id).all()
+    if sender_id is not None:
+        return Message.query.filter_by(sender_id=sender_id, recipient_id=recipient_id).order_by(Message.date_time.desc()).all()
     else:
-        return Message.query.filter_by(recipient_id=current_user.id).all()
+        return Message.query.order_by(Message.date_time.desc()).all()

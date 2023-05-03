@@ -1,3 +1,4 @@
+from flask_login import current_user
 from model import db, User, Picture, Message, connect_to_db
 
 def get_all_users():
@@ -27,8 +28,12 @@ def create_user(username, password, user_bio, user_email, is_female):
 def get_message_by_id(message_id):
     return Message.query.filter_by(message_id=message_id).first()
 
-def get_all_messages(sender_id=None):
-    if sender_id is not None:
-        return Message.query.filter_by(sender_id=sender_id).all()
+def get_all_messages(sender_id=None, recipient_id=None):
+    if sender_id is not None and recipient_id is not None:
+        return Message.query.filter_by(sender_id=sender_id, recipient_id=recipient_id).all()
+    elif sender_id is not None:
+        return Message.query.filter_by(sender_id=sender_id, recipient_id=current_user.id).all()
+    elif recipient_id is not None:
+        return Message.query.filter_by(sender_id=current_user.id, recipient_id=recipient_id).all()
     else:
-        return Message.query.all()
+        return Message.query.filter_by(recipient_id=current_user.id).all()

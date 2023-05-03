@@ -151,7 +151,14 @@ def messages():
         db.session.add(new_message)
         db.session.commit()
         flash('Message sent!')
-        return redirect(url_for('messages'))
+    
+    sender_id = request.args.get('sender')
+    
+    if sender_id:
+        messages = crud.get_all_messages(sender_id=int(sender_id), recipient_id=current_user.id)
+    else:
+        messages = crud.get_all_messages(recipient_id=current_user.id)
+   
     
     return render_template('messages.html', message_form=message_form, messages=messages, senders=senders)
 

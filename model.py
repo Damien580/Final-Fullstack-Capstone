@@ -35,19 +35,6 @@ class Picture(db.Model):
     def __repr__(self):
         return f"<Picture: pic_id={self.pic_id}"
 
-class Conversation(db.Model):
-    __tablename__ = 'conversations'
-
-    convo_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    user1_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    user2_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-
-    user1 = db.relationship('User', foreign_keys=[user1_id])
-    user2 = db.relationship('User', foreign_keys=[user2_id])
-    
-    def __repr__(self):
-        return f"<Conversation between {self.id} and {self.other_user}>"
-    
 class Message(db.Model):
     __tablename__ = "messages"
     
@@ -64,7 +51,7 @@ class Message(db.Model):
         return self.timestamp.strftime("%b %d, %Y %H:%M:%S")
     
     def __repr__(self):
-        return f"<Message={self.message_id}"
+        return f"<Message={self.message}>"
 
 def connect_to_db(app):
     app.config["SQLALCHEMY_DATABASE_URI"] = os.environ["POSTGRES_URI"]

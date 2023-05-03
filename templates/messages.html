@@ -11,40 +11,34 @@
         {{ message_form.submit }}
     </form>
 </div>
+{% for message in get_flashed_messages() %}
+<p>{{ message }}</p>
+{% endfor %}
+<br>
 {% endblock %}
 
 {% block body %}
-    <div class="messages">
-        {% for message in messages %}
-            <div class="message
-            {% if message.sender.id == current_user.id %}
-                sender
-            {% else %}
-                recipient
-            {% endif %}
-            ">
-            {% if message.sender.id == current_user.id %}
-                <p>From: You</p>
-            {% else %}
-                <p>From: {{ message.sender.username }}</p>
-            {% endif %}
-                <p>Message: {{ message.message }}</p>
-                <p>Sent: {{ message.get_time() }}</p>
-            </div>
+<h1>My Messages:</h1>
+<form method="GET">
+    <label for="sender">Filter by Sender:</label>
+    <select name="sender" id="sender">
+        <option value="">All</option>
+        {% for sender in senders %}
+            <option value="{{ sender.id }}">{{ sender.username }}</option>
         {% endfor %}
-    </div>
-    {% for message in get_flashed_messages() %}
-    <p>{{ message }}</p>
-    {% endfor %}
-    <br>
-    <div>
-        <h2>Reply:</h2>
-        <form action="{{ url_for('messages') }}" method="POST">
-            {{ message_form.recipient(value=user_id) }}
-            {{ message_form.message }}
-            {{ message_form.submit }}
-        </form>
-    </div>
-</body> 
+    </select>
+    <input type="submit" value="Filter">
+</form>
 
+<ul>
+{% for message in messages %}
+    <li>
+        <div>
+            <p>From: {{ message.sender.username }}</p>
+            <p>Message: {{ message.message }}</p>
+            <p>Date/Time: {{ message.date_time }}</p>
+        </div>
+    </li>
+{% endfor %}
+</ul>
 {% endblock %}

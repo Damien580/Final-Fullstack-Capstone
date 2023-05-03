@@ -3,7 +3,6 @@ from wtforms import StringField, SubmitField, TextAreaField, BooleanField, Hidde
 from wtforms.validators import DataRequired, Length
 from wtforms.fields import RadioField
 from datetime import datetime
-from model import User
 
 class LoginForm(FlaskForm):
     username = StringField("username")
@@ -30,12 +29,13 @@ class SearchForm(FlaskForm):
     is_female = RadioField('Gender', choices=[('True', 'Female'), ('False', 'Male')], validators=[DataRequired()])
     
 class MessageForm(FlaskForm):
+    sender_id = HiddenField('Sender')
     recipient = SelectField('Recipient', validators=[DataRequired()])
     message = TextAreaField('Message', validators=[DataRequired()])
     submit = SubmitField('Submit')
     
-    def __init__(self, *args, **kwargs):
-        super(MessageForm, self).__init__(*args, **kwargs)
-        self.recipient.choices = [(user.id, user.username) for user in User.query.all()]
-    
-    
+class ReceivedForm(FlaskForm):
+    recipient = HiddenField('Recipient')
+    sender_id = SelectField('Sender', validators=[DataRequired()])
+    message = TextAreaField('Message', validators=[DataRequired()])
+    submit = SubmitField('Submit')

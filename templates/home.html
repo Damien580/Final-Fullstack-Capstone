@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block head %}
-<div class="login">
+<div class="form-container">
     <p>Log In:</p>
     <form action="/login" method="POST">
         {{ login_form.csrf_token() }}

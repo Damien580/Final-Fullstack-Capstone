@@ -7,17 +7,6 @@
 {% endblock %}
 
 {% block body %}
-{% if conversations %}
-    <ul>
-        {% for convo in conversations %}
-            <li>
-                <div>
-                    <p><a href="">{{ user2.username }}</a></p>
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
-{% endif %}
     {% if pictures %}
         <ul>
         {% for pic in pictures %}

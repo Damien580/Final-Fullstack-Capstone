@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, flash, session, redirect, url_for
-from model import User, connect_to_db, db, Picture, Message, Conversation
+from model import User, connect_to_db, db, Picture, Message
 from forms import NewUserForm, SearchForm, AddPhotoForm, LoginForm, MessageForm
 from flask_login import LoginManager, login_user, login_required, current_user, logout_user
 from datetime import datetime
@@ -76,7 +76,7 @@ def profile():
     add_photo_form = AddPhotoForm()
     profile = current_user
     pictures = crud.get_user_pics(profile.id)
-    conversations = crud.get_all_convo()
+    
     
     if add_photo_form.validate_on_submit():
         pic_url = add_photo_form.url.data
@@ -92,7 +92,7 @@ def profile():
             return redirect(url_for("profile"))
         else:
             flash("Picture not added!!!")
-    return render_template("profile.html", profile=profile, pictures=pictures, add_photo_form=add_photo_form, conversations=conversations)
+    return render_template("profile.html", profile=profile, pictures=pictures, add_photo_form=add_photo_form)
 
 @app.route("/users")
 @login_required
@@ -131,41 +131,27 @@ def delete_picture(pic_id):
 @app.route('/messages', methods=['GET', 'POST'])
 @login_required
 def messages():
+    messages = crud.get_all_messages()
+    
     message_form = MessageForm()
     message_form.recipient.choices = [(user.id, user.username) for user in User.query.all()]
+    message = []
     
     if message_form.validate_on_submit():
         sender_id = current_user.id
         recipient_id = int(message_form.recipient.data)
         message = message_form.message.data  
         new_message = Message(sender_id=sender_id, recipient_id=recipient_id, message=message)
-        
-        def message(user_id):
-            other_user = User.query.get(user_id)
-            sent_messages = Message.query.filter_by(sender=current_user, recipient=other_user).all()
-            recieved_messages = Message.query.filter_by(sender=other_user, recipient=current_user).all()
-            messages = sent_messages + recieved_messages
-            messages = sorted(messages, key=lambda x: x.timestamp)
-            print(messages)
-            message_form = MessageForm()
-            return render_template("messages.html", messages=messages, message_form=message_form, user_id=user_id)
-
+        print(message)
+        print(new_message)
+        print(type(new_message))
         db.session.add(new_message)
         db.session.commit()
         flash('Message sent!')
-        return redirect(url_for('messages'))
     
-    conversations = Conversation.query.filter(
-        (Conversation.user1_id == current_user.id) | (Conversation.user2_id == current_user.id)).all()
-    return render_template('messages.html', message_form=message_form, conversations=conversations)
+    return render_template('messages.html', message_form=message_form, messages=messages)
 
-
-
-
-
-
-
-
+    
 
 if __name__ == "__main__":
     connect_to_db(app)

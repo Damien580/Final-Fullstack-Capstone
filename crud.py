@@ -1,4 +1,4 @@
-from model import db, User, Picture, Conversation, Message, connect_to_db
+from model import db, User, Picture, Message, connect_to_db
 
 def get_all_users():
     return User.query.all()
@@ -24,11 +24,11 @@ def create_user(username, password, user_bio, user_email, is_female):
     db.session.commit()
     return new_user
 
-def get_messages_by_convo(convo_id):
-    return Message.query.filter_by(conversation_id=convo_id).all()
+def get_message_by_id(message_id):
+    return Message.query.filter_by(message_id=message_id).first()
 
-def get_all_convo():
-    return Conversation.query.all()
-
-def get_convo_by_id(id):
-    return Conversation.query.get(id)
+def get_all_messages(sender_id=None):
+    if sender_id is not None:
+        return Message.query.filter_by(sender_id=sender_id).all()
+    else:
+        return Message.query.all()

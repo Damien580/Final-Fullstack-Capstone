@@ -131,25 +131,29 @@ def delete_picture(pic_id):
 @app.route('/messages', methods=['GET', 'POST'])
 @login_required
 def messages():
-    messages = crud.get_all_messages()
-    
+    messages = []
+    senders = User.query.all()
     message_form = MessageForm()
     message_form.recipient.choices = [(user.id, user.username) for user in User.query.all()]
-    message = []
+    
+   
+    sender_id = request.args.get('sender')
+    if sender_id is not None:
+        messages = crud.get_all_messages(sender_id=int(sender_id))
+    else:
+        messages = crud.get_all_messages()
     
     if message_form.validate_on_submit():
         sender_id = current_user.id
         recipient_id = int(message_form.recipient.data)
         message = message_form.message.data  
         new_message = Message(sender_id=sender_id, recipient_id=recipient_id, message=message)
-        print(message)
-        print(new_message)
-        print(type(new_message))
         db.session.add(new_message)
         db.session.commit()
         flash('Message sent!')
+        return redirect(url_for('messages'))
     
-    return render_template('messages.html', message_form=message_form, messages=messages)
+    return render_template('messages.html', message_form=message_form, messages=messages, senders=senders)
 
     
 

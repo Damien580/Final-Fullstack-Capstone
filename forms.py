@@ -34,8 +34,3 @@ class MessageForm(FlaskForm):
     message = TextAreaField('Message', validators=[DataRequired()])
     submit = SubmitField('Submit')
     
-class ReceivedForm(FlaskForm):
-    recipient = HiddenField('Recipient')
-    sender_id = SelectField('Sender', validators=[DataRequired()])
-    message = TextAreaField('Message', validators=[DataRequired()])
-    submit = SubmitField('Submit')

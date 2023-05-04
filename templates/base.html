@@ -10,23 +10,26 @@
 </head>
 
 <header>
-    <p class="title">Pairs</p>
-    <div class="nav-bar">
-        <ul class="navbar">
-            <li class="nav-link">
-                <a href="/">Home</a>
-            </li>
-            <li class="navbar">
-                <a href="/profile">Profile</a>
-            </li>
-            <li class="navbar">
-                <a href="/users">Members</a>
-            </li>
-            <li class="navbar">
-                <a href="/messages">Messages</a>
-            </li>
-        </ul>
-    </div>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a class="navbar-brand" href="/">PAIRS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <img src="pics/DALL·E 2023-05-04 09.28.38 - romantic duo digital art.png"
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                <a class="nav-link" href="/profile">Profile<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                <a class="nav-link" href="/users">Members<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                <a class="nav-link" href="/messages">Messages<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </header>
 
     {% block head %}
@@ -36,8 +39,10 @@
     {% block body %}
 
     {% endblock %}
-</body>
     {% block foot %}
-
     {% endblock %}
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
 </html>

@@ -1,0 +1,53 @@
+/* base.html */
+.navbar-brand-dark-pink {
+    color: #FF1493; 
+    font-size: x-large;
+}
+.nav-link-dark-pink{
+    color: #FF1493;
+}
+.nav-item{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 30px;
+}
+header{
+    display: flex;
+    background-color:black;
+    height: 7vh;
+    width:100vw;
+    position: sticky;
+    top: 0px;
+}
+
+/* home.html  */
+.pic1{
+margin-right: 20px;
+height: 200px;
+aspect-ratio: 1/1;
+}
+.form-container-1{
+    display: flex;
+    flex-direction: row;
+    top: 0px;
+    flex: auto;
+}
+.btn-submit{
+    background-color: black;
+    color: #FF1493;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.form-container-2{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin: 0;
+}
+.btn-logout{
+    display: flex;
+}

@@ -1,37 +1,39 @@
 {% extends "base.html" %}
 
-{% block head %}
-    {% if profile %}
-        <h2>{{ profile.username }}</h2>
-    {% endif %}
-{% endblock %}
 
 {% block body %}
+
+{% if profile %}
+<h2 class="name">{{ profile.username }}</h2>
+{% endif %}
+
+
+<body class="bgrnd-pic"></body>
     {% if pictures %}
-        <ul>
+    <ul>
         {% for pic in pictures %}
-            <li>
-                <img src="{{ pic.pic_url }}" alt="Picture">
-                <p>{{ pic.comment }}</p>
-                <form method="POST" action="{{ url_for('delete_picture', pic_id=pic.pic_id) }}">
-                    <input type="hidden" name="pic_id" value="{{ pic.pic_id }}">
-                    <button type="submit">Delete</button>
-                </form>
-            </li>
+        <li class="pics">
+            <img src="{{ pic.pic_url }}" alt="Picture">
+            <p class="pic-comment">{{ pic.comment }}</p>
+            <form method="POST" action="{{ url_for('delete_picture', pic_id=pic.pic_id) }}">
+                <input type="hidden" name="pic_id" value="{{ pic.pic_id }}">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
         {% endfor %}
-        </ul>
+    </ul>
     {% endif %}
     <form method="POST" action="{{ url_for('profile') }}">
         {{ add_photo_form.hidden_tag() }}
-        {{ add_photo_form.url.label }} {{ add_photo_form.url }}
-        {{ add_photo_form.comment.label }} {{ add_photo_form.comment }}
+        {{ add_photo_form.url.label(class="pic-form") }} {{ add_photo_form.url(class="pic-form-box") }}
+        {{ add_photo_form.comment.label(class="pic-form") }} {{ add_photo_form.comment(class="pic-form-box") }}
         {{ add_photo_form.submit() }}
     </form>
     {% for message in get_flashed_messages() %}
     <p>{{ message }}</p>
     {% endfor %}
-{% endblock %}
-
-{% block foot %}
-
-{% endblock %}
+    {% endblock %}
+    
+    {% block foot %}
+    
+    {% endblock %}

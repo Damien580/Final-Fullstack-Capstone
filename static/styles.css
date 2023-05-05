@@ -1,12 +1,15 @@
 /* base.html */
 .navbar-brand-dark-pink {
-    color: #FF1493; 
+    display: flex;
+    color: rgb(236, 236, 133); 
     font-size: x-large;
 }
 .nav-link-dark-pink{
-    color: #FF1493;
+    display: flex;
+    color: rgb(236, 236, 133)
 }
 .nav-item{
+    display: flex;
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 30px;
@@ -14,27 +17,32 @@
 header{
     display: flex;
     background-color:black;
-    height: 7vh;
+    height: 50px;
     width:100vw;
     position: sticky;
     top: 0px;
 }
 
 /* home.html  */
-.pic1{
-margin-right: 20px;
-height: 200px;
-aspect-ratio: 1/1;
+.home-body{
+    background-color: rgb(140, 199, 105);
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: .8;
+    width: 100vw;
+    height: 100vh;
 }
 .form-container-1{
     display: flex;
     flex-direction: row;
     top: 0px;
     flex: auto;
+    margin-left: 40px;
+    
 }
 .btn-submit{
     background-color: black;
-    color: #FF1493;
+    color: rgb(236, 236, 133);
     font-size: 18px;
     padding: 10px 20px;
     border-radius: 5px;
@@ -46,8 +54,54 @@ aspect-ratio: 1/1;
     flex-direction: row;
     justify-content: flex-end;
     align-items: flex-start;
-    margin: 0;
+    margin-left: 30px;
 }
 .btn-logout{
     display: flex;
+    color: black;
+    background-color: rgb(236, 236, 133);
+    margin-top: 230px;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
 }
+.photo1{
+    display: flex;
+    height: 50vh;
+    margin-left:  100px;
+    z-index: -1;
+}
+.acct-create{
+    font-size: x-large;
+    font-weight: 600;
+    margin: 25px;
+}
+/* profile.html */
+.name{
+    color: red;
+    font-size: 100px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+}
+.bgrnd-pic{
+    background-image: url("/static/pics/love-couple.png");
+    background-size: cover;
+    background-attachment: scroll;
+    
+}
+.pic-form{
+    color: #b506fb;
+    font-size: 25px;
+}
+.pic-form-box{
+    border-color: #b506fb;
+    background-color: transparent;
+    color: #b506fb;
+}
+.pic-comment{
+    color: rgb(0, 255, 179);
+}
+
+

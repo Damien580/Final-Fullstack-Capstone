@@ -1,12 +1,10 @@
 {% extends "base.html" %}
 
 {% block head %}
-    <h1>User Info:</h1>
         {% if user %}
             <div class="user_info">
-                <p>Name: {{ user.username }}</p>
-                <p><a href="mailto:{{ user.user_email }}">Message Me!</a></p>
-                <p>Age: {{ user.user_bio}}</p>
+                <p class="username">{{ user.username }}</p>
+                <p>{{ user.user_bio}}</p>
             </div>
         {% else %}
             <p>User not found.</p>

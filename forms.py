@@ -14,7 +14,7 @@ class NewUserForm(FlaskForm):
     new_password = StringField('Password', validators=[DataRequired(), Length(min=8, max=24)])
     user_bio = TextAreaField('Bio', validators=[Length(min=25, max=3000)])
     user_email = StringField('Email', validators=[DataRequired()])
-    is_female = RadioField('Gender', choices=[('true', 'Female'), ('false', 'Male')], validators=[DataRequired()])
+    is_female = RadioField('I am:', choices=[('true', 'Female'), ('false', 'Male')], validators=[DataRequired()])
     submit = SubmitField('Create')
     
 
@@ -25,7 +25,8 @@ class AddPhotoForm(FlaskForm):
     submit = SubmitField('Add')
     
 class SearchForm(FlaskForm):
-    is_female = RadioField('Gender', choices=[('True', 'Female'), ('False', 'Male')], validators=[DataRequired()])
+    is_female = RadioField('I am searching for a', choices=[('True', 'Female'), ('False', 'Male')], validators=[DataRequired()])
+    submit = SubmitField('Search')
     
 class MessageForm(FlaskForm):
     sender_id = HiddenField('Sender')

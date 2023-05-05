@@ -57,9 +57,9 @@ def login():
         if user:
             if user.password == password:
                 login_user(user)
-                flash("logged in")
+                flash("Logged In!")
             else:    
-                flash("Either the password or username is incorrect.")
+                flash("Either the password or username is incorrect!")
 
     return render_template("home.html", login_form=login_form, new_user_form=new_user_form)
         
@@ -101,12 +101,10 @@ def all_users():
     is_female = request.args.get('is_female')
     if is_female:
         is_female = is_female == 'True'
-        print("is_female from query string:", is_female)
         users = crud.get_users_by_sex(is_female)
     else:
         users = crud.get_all_users()
     
-    print("all users:", users)
     return render_template('all_users.html', users=users, is_female=is_female, search_form=search_form)
 
 @app.route("/users/<int:id>")
@@ -157,7 +155,7 @@ def messages():
     if sender_id:
         messages = crud.get_all_messages(sender_id=int(sender_id), recipient_id=current_user.id)
     else:
-        messages = crud.get_all_messages(recipient_id=current_user.id)
+        messages = []
    
     
     return render_template('messages.html', message_form=message_form, messages=messages, senders=senders)

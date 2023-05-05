@@ -30,6 +30,6 @@ def get_message_by_id(message_id):
 
 def get_all_messages(sender_id=None, recipient_id=None):
     if sender_id is not None:
-        return Message.query.filter_by(sender_id=sender_id, recipient_id=recipient_id).order_by(Message.date_time.desc()).all()
+        return Message.query.filter_by(sender_id=sender_id, recipient_id=current_user.id).order_by(Message.date_time.desc()).all()
     else:
         return Message.query.order_by(Message.date_time.desc()).all()

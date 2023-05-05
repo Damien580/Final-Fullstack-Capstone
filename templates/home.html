@@ -3,15 +3,13 @@
 {% block body %}
 <body class="home-body">
     <div class="form-container-1">
-
+        <p class="acct-create">Log In:</p>
         <form class="login" action="/login" method="POST">
             {{ login_form.csrf_token() }}
             {{ login_form.username.label(class="home-text") }}<br>
             {{ login_form.username(class="home-text") }}<br><br>
             {{ login_form.password.label(class="home-text") }}<br>
             {{ login_form.password(class="home-text") }}<br><br>
-            {{ login_form.remember_me.label(class="home-text") }}
-            {{ login_form.remember_me(class="home-text") }}<br><br>
             {{ login_form.submit(value="Log In", class="btn-submit") }}
         </form>   
             <form class="logout-button" action="/logout">
@@ -19,7 +17,7 @@
             </form>
         <form>
             {% for message in get_flashed_messages() %}
-            <p>{{ message }}</p>
+            <p>{{ message.title() }}</p>
             {% endfor %}
         </form>
         <div class="form-container-2">

@@ -5,10 +5,9 @@ from wtforms.fields import RadioField
 from datetime import datetime
 
 class LoginForm(FlaskForm):
-    username = StringField("username")
-    password = PasswordField("password")
-    remember_me = BooleanField("remember me")
-    submit = SubmitField("submit")
+    username = StringField("Username")
+    password = PasswordField("Password")
+    submit = SubmitField("Submit")
 
 class NewUserForm(FlaskForm):
     new_username = StringField('Username', validators=[DataRequired(), Length(min=4, max=255)])

@@ -12,7 +12,7 @@
     display: flex;
     margin-top: auto;
     margin-bottom: auto;
-    margin-left: 30px;
+    margin-left: 20px;
 }
 header{
     display: flex;
@@ -22,6 +22,11 @@ header{
     position: sticky;
     top: 0px;
 }
+.logo{
+    height: 25px;
+    margin-left: 15px;
+}
+
 
 /* home.html  */
 .home-body{
@@ -41,6 +46,7 @@ header{
     
 }
 .btn-submit{
+    display: flex;
     background-color: black;
     color: rgb(236, 236, 133);
     font-size: 18px;
@@ -48,6 +54,7 @@ header{
     border-radius: 5px;
     border: none;
     cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
 }
 .form-container-2{
     display: flex;
@@ -58,50 +65,108 @@ header{
 }
 .btn-logout{
     display: flex;
+    position: absolute;
     color: black;
     background-color: rgb(236, 236, 133);
-    margin-top: 230px;
+    margin-top: 175px;
     font-size: 18px;
     padding: 10px 20px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+    
 }
 .photo1{
     display: flex;
     height: 50vh;
     margin-left:  100px;
-    z-index: -1;
+    
 }
 .acct-create{
     font-size: x-large;
     font-weight: 600;
     margin: 25px;
 }
+
+
 /* profile.html */
 .name{
-    color: red;
+    color: rgb(0, 46, 137);
     font-size: 100px;
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    text-align: center;
+    font-family: Savoye LET;
+    text-align:start;
+    letter-spacing: 10px;
+}
+.add-name{
+    color: rgb(0, 46, 137);
+    font-size: 40px;
+    font-family: Savoye LET;
+    text-align:start;
+    letter-spacing: 3px;
+    margin-top: 30px;
 }
 .bgrnd-pic{
-    background-image: url("/static/pics/love-couple.png");
+    background-color: rgb(142, 221, 255);
     background-size: cover;
     background-attachment: scroll;
     
 }
 .pic-form{
-    color: #b506fb;
+    color: rgb(0, 46, 137);
     font-size: 25px;
+    margin: 0px;
+    padding: 0px;
 }
-.pic-form-box{
-    border-color: #b506fb;
+.pic-form-box-address{
+    border-color: rgb(0, 46, 137);
     background-color: transparent;
-    color: #b506fb;
+    color: rgb(0, 46, 137);
+    
+}
+.pic-form-box-comment{
+    border-color: rgb(0, 46, 137);
+    background-color: transparent;
+    color: rgb(0, 46, 137);
 }
 .pic-comment{
-    color: rgb(0, 255, 179);
+    color: rgb(0, 46, 137);
+}
+.pic-list{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+.pics{
+    margin-left: 30px;
+}
+.pic{
+    transition: transform 0.3s ease-in-out;
+}
+.pic:hover{
+    transform: scale(2);
+}
+.delete-btn{
+    display: flex;
+    color: black;
+    background-color: rgba(255, 0, 0, 0.641);
+    font-size: 12px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9)
+}
+.add-btn{
+    margin-left: 25px;
+    color: rgb(142, 221, 255);
+    background-color: rgb(0, 46, 137);
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+    width: 70px;
 }
 
 
+/* all_users.html */

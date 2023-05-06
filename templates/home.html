@@ -7,9 +7,9 @@
         <form class="login" action="/login" method="POST">
             {{ login_form.csrf_token() }}
             {{ login_form.username.label(class="home-text") }}<br>
-            {{ login_form.username(class="home-text") }}<br><br>
+            {{ login_form.username(class="home-field") }}<br><br>
             {{ login_form.password.label(class="home-text") }}<br>
-            {{ login_form.password(class="home-text") }}<br><br>
+            {{ login_form.password(class="home-field") }}<br><br>
             {{ login_form.submit(value="Log In", class="btn-submit") }}
         </form>   
             <form class="logout-button" action="/logout">
@@ -25,21 +25,22 @@
             <form action="{{ url_for('new_user') }}" method="POST">
                 {{ new_user_form.csrf_token() }}
                 {{ new_user_form.new_username.label }}<br>
-                {{ new_user_form.new_username }}<br><br>
+                {{ new_user_form.new_username(class="home-field") }}<br><br>
                 {{ new_user_form.new_password.label}}<br>
-                {{ new_user_form.new_password }}<br><br>
+                {{ new_user_form.new_password(class="home-field") }}<br><br>
                 {{ new_user_form.user_bio.label }}<br>
-                {{ new_user_form.user_bio }}<br><br>
+                {{ new_user_form.user_bio(class="home-field") }}<br><br>
                 {{ new_user_form.user_email.label }}<br>
-                {{ new_user_form.user_email }}<br>
-                {{ new_user_form.is_female.label }}
-                {{ new_user_form.is_female }}
-                {{ new_user_form.submit }}
+                {{ new_user_form.user_email(class="home-field") }}<br>
+                {{ new_user_form.is_female.label(class="fem") }}
+                {{ new_user_form.is_female(class="fem") }}
+                {{ new_user_form.submit(class="create-btn") }}
             </form>
             <img class="photo1" src="static/pics/romanticpears.png">
         </div>
     </div>
 </body>
+<p class="tagline">"Love is in the Pair!"</p>
 {% endblock %}
 
 {% block foot %}

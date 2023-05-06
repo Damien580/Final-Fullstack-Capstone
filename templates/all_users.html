@@ -7,13 +7,7 @@
 {% endblock %}
 
 {% block body %}
-<div class="deco">
-    <img class="romantic-pic8" src="static/pics/priscilla-du-preez-K8XYGbw4Ahg-unsplash.jpg" style="position: absolute; top: 25px; left: 900px;">
-    <img class="romantic-pic4" src="static/pics/freestocks-9rHgOVRdrDM-unsplash.jpg" style="position: absolute; top: 400px; left: 800px;">
-    <img class="romantic-pic5" src="static/pics/mia-harvey-SBf1gahpDxo-unsplash.jpg" style="position: absolute; top: 180px; left: 775px;">
-    <img class="romantic-pic6" src="static/pics/Chalon_Hutson_pears_bb452df3-ec6a-4cb3-a374-6ce5145950fc.png" style="position: absolute; top: 175px; left: 1130px;">
-    <img class="romantic-pic7" src="static/pics/justin-groep-0CTiOp0Zwrg-unsplash.jpg" style="position: absolute; top: 595px; left: 1100px;">
-</div>
+
 <form class="search-form" method="GET" action="{{ url_for('all_users') }}">
     {{ search_form.csrf_token }}
     {{ search_form.is_female.label }}

@@ -1,12 +1,14 @@
-/* base.html */
+/*----------------- base.html--------------------- */
 .navbar-brand-dark-pink {
     display: flex;
-    color: rgb(236, 236, 133); 
+    color: #5a2328; 
     font-size: x-large;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
 }
 .nav-link-dark-pink{
     display: flex;
-    color: rgb(236, 236, 133)
+    color: #5a2328;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
 }
 .nav-item{
     display: flex;
@@ -16,20 +18,16 @@
 }
 header{
     display: flex;
-    height: 50px;
+    height: 100px;
     width:100vw;
     position: static;
     top: 0px;
 }
-.logo{
-    height: 25px;
-    margin-left: 15px;
-}
 
 
-/* home.html  */
+/*----------------------- home.html --------------------- */
 .home-body{
-    background-color: rgb(140, 199, 105);
+    background-color: #7a9b76;
     background-size: cover;
     background-repeat: no-repeat;
     opacity: .8;
@@ -42,12 +40,14 @@ header{
     top: 0px;
     flex: auto;
     margin-left: 40px;
+    color: #b5ffe9;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
     
 }
 .btn-submit{
     display: flex;
-    background-color: black;
-    color: rgb(236, 236, 133);
+    background-color: #b5ffe9;
+    color: #444545;
     font-size: 18px;
     padding: 10px 20px;
     border-radius: 5px;
@@ -62,19 +62,56 @@ header{
     align-items: flex-start;
     margin-left: 30px;
 }
+.form-container-2 ul{
+    list-style: none;
+}
+.tagline{
+    display: flex;
+    justify-content:center ;
+    font-size: 200px;
+    font-family: Savoye LET;
+    color: #444545;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+@keyframes glow {
+    from {
+      text-shadow: 0 0 5px #b5ffe9, 0 0 10px #b5ffe9, 0 0 15px #16FA4A , 0 0 20px #16FA4A , 0 0 25px #16FA4A , 0 0 30px #068223 , 0 0 35px #068223 ;
+    }
+    to {
+      text-shadow: 0 0 10px #b5ffe9, 0 0 20px #b5ffe9, 0 0 30px #16FA4A , 0 0 40px #16FA4A , 0 0 50px #16FA4A , 0 0 60px #068223 , 0 0 70px #068223 ;
+    }
+  }
+.home-field{
+    background-color: #444545;
+    color: #b5ffe9;
+    border-color: #b5ffe9;
+}
 .btn-logout{
     display: flex;
     position: absolute;
-    color: black;
-    background-color: rgb(236, 236, 133);
+    color: #b5ffe9;
+    background-color: #5a2328;
     margin-top: 175px;
     font-size: 18px;
     padding: 10px 15px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);   
+}
+.fem{
+    color: #5a2328;
+}
+.create-btn{
+    display: flex;
+    background-color: #b5ffe9;
+    color: #444545;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
-    
 }
 .photo1{
     display: flex;
@@ -89,54 +126,75 @@ header{
 }
 
 
-/* profile.html */
+/*--------------------- profile.html----------------------- */
 .name{
-    color: rgb(0, 46, 137);
-    font-size: 100px;
+    display: flex;
+    font-size: 150px;
     font-family: Savoye LET;
     text-align:start;
-    letter-spacing: 10px;
+    margin-top: 25px;
+    margin-left: 25px;
+    color: #444545;
+    animation: glow 1s ease-in-out infinite alternate;
 }
+@keyframes glow {
+    from {
+      text-shadow: 0 0 5px #b5ffe9, 0 0 10px #b5ffe9, 0 0 15px #16FA4A , 0 0 20px #16FA4A , 0 0 25px #16FA4A , 0 0 30px #068223 , 0 0 35px #068223 ;
+    }
+    to {
+      text-shadow: 0 0 10px #b5ffe9, 0 0 20px #b5ffe9, 0 0 30px #16FA4A , 0 0 40px #16FA4A , 0 0 50px #16FA4A , 0 0 60px #068223 , 0 0 70px #068223 ;
+    }
+  }
 .add-name{
-    color: rgb(0, 46, 137);
-    font-size: 40px;
-    font-family: Savoye LET;
+    color: #b5ffe9;
+    font-size: x-large;
+    font-weight: 600;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
     text-align:start;
     letter-spacing: 3px;
     margin-top: 30px;
+    margin-left: 100px;
 }
 .profile-body{
-    background-color: rgb(142, 221, 255);
+    background-color: #7a9b76;
     background-size: cover;
     background-attachment: scroll;
     
 }
+.pic-add{
+    margin-left: 50px;
+}
 .pic-form{
-    color: rgb(0, 46, 137);
-    font-size: 25px;
-    margin: 0px;
+    color: #b5ffe9;
+    margin-left: 50px;
     padding: 0px;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
 }
 .pic-form-box-address{
-    border-color: rgb(0, 46, 137);
+    border-color: #b5ffe9;
     background-color: transparent;
-    color: rgb(0, 46, 137);
+    color:#b5ffe9;
+    background-color: #444545;
     
 }
 .pic-form-box-comment{
-    border-color: rgb(0, 46, 137);
+    border-color: #b5ffe9;
     background-color: transparent;
-    color: rgb(0, 46, 137);
+    color: #b5ffe9;
+    background-color: #444545;
 }
 .pic-comment{
-    color: rgb(0, 46, 137);
+    color: #b5ffe9;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
+
 }
 .pic-list{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     list-style: none;
-    width: 40vw;
+    margin-right: 50px;
+    margin-left: 50px;
 }
 .pics{
     margin-left: 30px;
@@ -149,8 +207,8 @@ header{
 }
 .delete-btn{
     display: flex;
-    color: black;
-    background-color: rgba(255, 0, 0, 0.641);
+    color: #b5ffe9;
+    background-color: #5a2328;
     font-size: 12px;
     border-radius: 5px;
     border: none;
@@ -159,8 +217,8 @@ header{
 }
 .add-btn{
     margin-left: 25px;
-    color: rgb(142, 221, 255);
-    background-color: rgb(0, 46, 137);
+    color: #444545;
+    background-color: #b5ffe9;
     font-size: 18px;
     border-radius: 5px;
     border: none;
@@ -172,28 +230,36 @@ header{
     height: 40px;
 }
 
-/* all_users.html */
+/*----------------------- all_users.html-------------------- */
 .heading{
     display: flex;
-    position: relative;
+    justify-content: center;
     left: 200px;
     font-size: 125px;
-    font-family: Simonetta;
-    color: #efce6e;
+    font-family: Savoye LET;
+    color: #444545;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    
+    animation: glow 1s ease-in-out infinite alternate;
 }
+@keyframes glow {
+    from {
+      text-shadow: 0 0 5px #b5ffe9, 0 0 10px #b5ffe9, 0 0 15px #16FA4A , 0 0 20px #16FA4A , 0 0 25px #16FA4A , 0 0 30px #068223 , 0 0 35px #068223 ;
+    }
+    to {
+      text-shadow: 0 0 10px #b5ffe9, 0 0 20px #b5ffe9, 0 0 30px #16FA4A , 0 0 40px #16FA4A , 0 0 50px #16FA4A , 0 0 60px #068223 , 0 0 70px #068223 ;
+    }
+  }
 .users-body{
-    background-color: #4f467e;
+    background-color: #7a9b76;
     
     
 }
 .search-form{
     display: flex;
-    position: relative;
+    justify-content: center;
     left: 200px;
     font-size: 30px;
-    color: #fcf6e3;
+    color: #5a2328;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 .search-form ul {
@@ -201,8 +267,8 @@ header{
 }
 .search-btn{
     display: flex;
-    background-color: #fcf6e3;
-    color: #4f467e;
+    background-color: #5a2328;
+    color: #b5ffe9;
     font-size: 12px;
     padding: 10px 20px;
     border-radius: 5px;
@@ -217,15 +283,13 @@ header{
     display: flex;
     font-size: 30px;
     flex-direction: column;
-    position: relative;
-    left: 250px;
+    position: absolute;
+    right: 42%;
     list-style: none;
-    margin-top: 50px;
-    font-family: Simonetta;
     text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
 }
 .user-list li a{
-    color: #efce6e;
+    color: #b5ffe9;
 }
 .romantic-pic1{
     height: 400px;
@@ -264,10 +328,13 @@ header{
     top: 0px;
     margin: 0px;
 }
-/* user.html */
+
+
+/* ------------------------ user.html--------------------- */
 .username{
     display: flex;
     justify-content: center;
-    font-size: 75px;
-    font-family: ;
+    font-size: 150px;
+    font-family: Backstreet;
+    margin-top: 25px;
 }

@@ -4,6 +4,8 @@ from forms import NewUserForm, SearchForm, AddPhotoForm, LoginForm, MessageForm
 from flask_login import LoginManager, login_user, login_required, current_user, logout_user
 from datetime import datetime
 import crud
+from distutils.log import debug
+from fileinput import filename
 
 app = Flask(__name__)
 app.secret_key = "DatingAppForMyCapstone"

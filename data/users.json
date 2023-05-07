@@ -1,5 +1,12 @@
 [
     {
+        "username": "DamienRedd",
+        "password": "AdminAdmin",
+        "user-bio": "My name is Damien Redd. I am working on this dating website as my capstone project for the Devmountain Python bootcamp I am graduating on May 12, 2023. I have built this website from the ground up, both frontend and backend. I have used Python, CSS, HTML, Flask, as well as some other libraries and frameworks. Please email me at DamienS.Redd@gmail.com with questions or comments.",
+        "user_email": "damiens.redd@gmail.com",
+        "is_female": false
+    },
+    {
         "username": "Coach-McGurk",
         "password": "Coach",
         "user_bio": "Hi, my name is Brian McGurk. I'm 37 yrs old, and I love air hockey and pickles. One time I went to Paris and ordered French Fries as a joke. No one laughed. I am so lonely, please go out with me.",
@@ -7,21 +14,21 @@
         "is_female": false
     },
     {
-        "username": "Canadian_Bacon69",
-        "password": "Ham",
+        "username": "CanadianBacon",
+        "password": "HamHamHam",
         "user_bio": "Hey, eh. I'm Zachariah. Why not join me for a LaBatt's Blue and some Moose videos I got on my last trip out to the great white north. I'm a member of the RCMP and would love to tell ya all aboot it, don't ya know. I'm a snuggler at heart and am looking for my Mama Bear!",
         "user_email": "GoodLuckCanuck@goohoo.org",
         "is_female": false
     },
     {
-        "username": "Buck_Wylde",
+        "username": "BuckWylde",
         "password": "Shalom",
         "user_bio": "Hey there, sweet thang! You know why they calls me Buck Wylde? 'Cause I gets Buck Wild. Lets make some magic tonight. No names, no regrets. I'm into tattoos and daddy issues. Ex-exotic dancer a plus. Not that picky. ",
         "user_email": "Rabbi.Ezekiel.Sheinfeld@TempleBethIsrael.org",
         "is_female": false
     },
     {
-        "username": "Swashbucklin'_Sam",
+        "username": "Swashbucklin'Sam",
         "password": "Boat",
         "user_bio": "Ahoy, matey. Batton the hatches and prepare for a night of salt water seduction. First, a lovely early dinner at Captain D's fried fish and po'boy stand, followed by a moonlit stroll on the beach. As the evening wanes, we can retire to my stateroom for a bit of parlay.",
         "user_email": "HoldFast@USNavy.gov",
@@ -35,14 +42,14 @@
         "is_female": true
     },
     {
-        "username": "Lucky_Linda_97",
+        "username": "LuckyLinda97",
         "password": "OhYeah!",
         "user_bio": "Yo, Linda's my name, and gambling's my game. You feelin' lucky? Well, come over and ante up!",
         "user_email": "Pokerintherear@Gamblers_Anonymous.org",
         "is_female": true
     },
     {
-        "username": "Cry_me_a_river",
+        "username": "Crymeariver",
         "password": "BooHoo",
         "user_bio": "I'm Bridgette Sadler. My favorite thing is watching sad 80's movies. Come cry with me, mope with me, weep and moan with me. It'll be a blast.",
         "user_email": "Why_God_Why@JonCryerFanClub.net",

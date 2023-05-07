@@ -9,10 +9,13 @@
 
 
 
-{% if pictures %}
-<ul class="pic-list">
-    <h2 class="name">Pictures:</h2>
-    {% for pic in pictures %}
+<h2 class="name">Pictures:</h2>
+{% for message in get_flashed_messages() %}
+<p class="flash">{{ message }}</p>
+{% endfor %}
+    {% if pictures %}
+    <ul class="pic-list">
+        {% for pic in pictures %}
         <li class="pics">
             <img class="pic" src="{{ pic.pic_url }}" alt="Picture">
             <p class="pic-comment">{{ pic.comment }}</p>
@@ -30,10 +33,7 @@
         {{ add_photo_form.url.label(class="pic-form") }} {{ add_photo_form.url(class="pic-form-box-address") }}
         {{ add_photo_form.comment.label(class="pic-form") }} {{ add_photo_form.comment(class="pic-form-box-comment") }}
         {{ add_photo_form.submit(class="add-btn") }}
-    </formclass>
-    {% for message in get_flashed_messages() %}
-    <p>{{ message }}</p>
-    {% endfor %}
+    </form>
     {% endblock %}
     
     {% block foot %}

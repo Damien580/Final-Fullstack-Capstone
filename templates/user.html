@@ -1,19 +1,22 @@
 {% extends "base.html" %}
 
 {% block head %}
+<body class="profile-body"></body>
         {% if user %}
             <div class="user_info">
                 <p class="username">{{ user.username }}</p>
-                <p>{{ user.user_bio}}</p>
+                <p class="bio">{{ user.user_bio}}</p>
             </div>
         {% else %}
             <p>User not found.</p>
         {% endif %}
         {% for pic in pictures %}
+    <ul class="pic-list">
         <li>
             <img src="{{ pic.pic_url }}" alt="Picture">
-            <p>{{ pic.comment }}</p>
+            <p class="pic-comment-user">{{ pic.comment }}</p>
         </li>
+    </ul>
     {% endfor %}
 {% endblock %}
 

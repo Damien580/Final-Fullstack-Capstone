@@ -69,13 +69,13 @@ header{
     display: flex;
     justify-content:center ;
     font-size: 200px;
-    font-family: Savoye LET;
-    color: #444545;
+    font-family: Late Night;
+    color: #b5ffce;
     animation: glow 1s ease-in-out infinite alternate;
 }
 @keyframes glow {
     from {
-      text-shadow: 0 0 5px #b5ffe9, 0 0 10px #b5ffe9, 0 0 15px #16FA4A , 0 0 20px #16FA4A , 0 0 25px #16FA4A , 0 0 30px #068223 , 0 0 35px #068223 ;
+      text-shadow: 0 0 1px #b5ffe9, 0 0 5px #b5ffe9, 0 0 10px #16FA4A , 0 0 15px #16FA4A , 0 0 20px #16FA4A , 0 0 25px #068223 , 0 0 30px #068223 ;
     }
     to {
       text-shadow: 0 0 10px #b5ffe9, 0 0 20px #b5ffe9, 0 0 30px #16FA4A , 0 0 40px #16FA4A , 0 0 50px #16FA4A , 0 0 60px #068223 , 0 0 70px #068223 ;
@@ -130,16 +130,16 @@ header{
 .name{
     display: flex;
     font-size: 150px;
-    font-family: Savoye LET;
+    font-family: Late Night;
     text-align:start;
     margin-top: 25px;
     margin-left: 25px;
-    color: #444545;
+    color: #b5ffce;
     animation: glow 1s ease-in-out infinite alternate;
 }
 @keyframes glow {
     from {
-      text-shadow: 0 0 5px #b5ffe9, 0 0 10px #b5ffe9, 0 0 15px #16FA4A , 0 0 20px #16FA4A , 0 0 25px #16FA4A , 0 0 30px #068223 , 0 0 35px #068223 ;
+      text-shadow: 0 0 1px #b5ffe9, 0 0 5px #b5ffe9, 0 0 10px #16FA4A , 0 0 15px #16FA4A , 0 0 20px #16FA4A , 0 0 25px #068223 , 0 0 30px #068223 ;
     }
     to {
       text-shadow: 0 0 10px #b5ffe9, 0 0 20px #b5ffe9, 0 0 30px #16FA4A , 0 0 40px #16FA4A , 0 0 50px #16FA4A , 0 0 60px #068223 , 0 0 70px #068223 ;
@@ -200,7 +200,7 @@ header{
     margin-left: 30px;
 }
 .pic{
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.4s ease-in-out;
 }
 .pic:hover{
     transform: scale(2);
@@ -235,15 +235,14 @@ header{
     display: flex;
     justify-content: center;
     left: 200px;
-    font-size: 125px;
-    font-family: Savoye LET;
-    color: #444545;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    font-size: 200px;
+    font-family: Late Night;
+    color: #b5ffce;
     animation: glow 1s ease-in-out infinite alternate;
 }
 @keyframes glow {
     from {
-      text-shadow: 0 0 5px #b5ffe9, 0 0 10px #b5ffe9, 0 0 15px #16FA4A , 0 0 20px #16FA4A , 0 0 25px #16FA4A , 0 0 30px #068223 , 0 0 35px #068223 ;
+      text-shadow: 0 0 1px #b5ffe9, 0 0 5px #b5ffe9, 0 0 10px #16FA4A , 0 0 15px #16FA4A , 0 0 20px #16FA4A , 0 0 25px #068223 , 0 0 30px #068223 ;
     }
     to {
       text-shadow: 0 0 10px #b5ffe9, 0 0 20px #b5ffe9, 0 0 30px #16FA4A , 0 0 40px #16FA4A , 0 0 50px #16FA4A , 0 0 60px #068223 , 0 0 70px #068223 ;
@@ -251,8 +250,6 @@ header{
   }
 .users-body{
     background-color: #7a9b76;
-    
-    
 }
 .search-form{
     display: flex;
@@ -283,10 +280,11 @@ header{
     display: flex;
     font-size: 30px;
     flex-direction: column;
-    position: absolute;
-    right: 42%;
+    text-align: center;
     list-style: none;
     text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
+    margin-top: 25px;
+    padding: 15px;
 }
 .user-list li a{
     color: #b5ffe9;
@@ -333,8 +331,139 @@ header{
 /* ------------------------ user.html--------------------- */
 .username{
     display: flex;
-    justify-content: center;
-    font-size: 150px;
-    font-family: Backstreet;
+    font-size: 100px;
+    font-family: Late Night;
     margin-top: 25px;
+    margin-left: 25px;
+    color: #b5ffce;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+@keyframes glow {
+    from {
+      text-shadow: 0 0 1px #b5ffe9, 0 0 5px #b5ffe9, 0 0 10px #16FA4A , 0 0 15px #16FA4A , 0 0 20px #16FA4A , 0 0 25px #068223 , 0 0 30px #068223 ;
+    }
+    to {
+      text-shadow: 0 0 10px #b5ffe9, 0 0 20px #b5ffe9, 0 0 30px #16FA4A , 0 0 40px #16FA4A , 0 0 50px #16FA4A , 0 0 60px #068223 , 0 0 70px #068223 ;
+    }
+  }
+  .bio{
+    margin-left: 100px;
+    color: #b5ffe9;
+    font-size: 25px;
+    font-weight: 400;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
+    
+  }
+  .pic-comment-user{
+    color: #5a2328;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+    font-size: 20px;
+  }
+  .user_info{
+    display: flex;
+    flex-direction: row;
+    margin-top: 25px;
+    }
+    .pic-list{
+        margin-left: 15vw;
+    }
+
+
+    /*------------------- messages.html--------------------- */
+.header{
+    display: flex;
+    font-size: 65px;
+    color: #b5ffe9;
+    font-family: Late Night;
+    color: #b5ffce;
+    animation: glow 1s ease-in-out infinite alternate;
+    margin-top: 45px;
+}
+@keyframes glow {
+    from {
+      text-shadow: 0 0 1px #b5ffe9, 0 0 5px #b5ffe9, 0 0 10px #16FA4A , 0 0 15px #16FA4A , 0 0 20px #16FA4A , 0 0 25px #068223 , 0 0 30px #068223 ;
+    }
+    to {
+      text-shadow: 0 0 10px #b5ffe9, 0 0 20px #b5ffe9, 0 0 30px #16FA4A , 0 0 40px #16FA4A , 0 0 50px #16FA4A , 0 0 60px #068223 , 0 0 70px #068223 ;
+    }
+  }
+.label-form{
+    font-size: 30px;
+    margin-left: 20px;
+}
+.drop{
+    margin-left: 20px;
+    color: #b5ffe9;
+    background-color: #444545;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+}
+.drop:active {
+    background-color: #444545;
+    color: #b5ffe9;
+}
+.box{
+    height: 100px;
+    width: 250px;
+    background-color: #444545;
+    color: #b5ffe9;
+    border: solid;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+}
+.search-btn2{
+    margin-left: 10px;
+    background-color: #5a2328;
+    color: #b5ffe9;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+}
+.header2{
+    display: flex;
+    font-size: 65px;
+    font-family: Late Night;
+    color: #b5ffce;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+@keyframes glow {
+    from {
+      text-shadow: 0 0 1px #b5ffe9, 0 0 5px #b5ffe9, 0 0 10px #16FA4A , 0 0 15px #16FA4A , 0 0 20px #16FA4A , 0 0 25px #068223 , 0 0 30px #068223 ;
+    }
+    to {
+      text-shadow: 0 0 10px #b5ffe9, 0 0 20px #b5ffe9, 0 0 30px #16FA4A , 0 0 40px #16FA4A , 0 0 50px #16FA4A , 0 0 60px #068223 , 0 0 70px #068223 ;
+    }
+  }
+.label-form2{
+    font-size: 30px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.spacer{
+    display: flex;
+    margin-bottom: 70px;
+}
+.messages-list{
+    display: flex;
+    margin-top: 15px;
+    font-size: 20px;
+    color: #b5ffe9;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
+}
+.message{
+    border: solid;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #5a2328;
+    background-color: #444545;
+    padding: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+}
+.flash{
+    display: flex;
+    color: #b5ffe9;
+    font-size: 30px;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
 }

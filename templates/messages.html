@@ -1,39 +1,43 @@
 {% extends "base.html" %}
 
 {% block head %}
-<div class="form-container">
-    <h1>Send A Message:</h1>
+<body class="home-body"></body>
+<div class="message-send">
+    <div class="spacer">
+    <h1 class="header">Send A Message</h1>
     <form class="message_form" action="{{ url_for('messages') }}" method="POST">
         {{ message_form.hidden_tag() }}
         {{ message_form.csrf_token() }}
-        {{ message_form.recipient.label }}{{ message_form.recipient }}
-        {{ message_form.message.label }}{{ message_form.message }}
-        {{ message_form.submit }}
+        {{ message_form.recipient.label(class="label-form") }}{{ message_form.recipient(class="drop") }}
+        {{ message_form.message.label(class="label-form")  }}{{ message_form.message(class="box") }}
+        {{ message_form.submit(class="search-btn2") }}
     </form>
+    </div>
 </div>
 {% for message in get_flashed_messages() %}
-<p>{{ message }}</p>
+<p class="flash">{{ message }}</p>
 {% endfor %}
 <br>
 {% endblock %}
 
 {% block body %}
-<h1>My Messages:</h1>
+<div class="">
+<h1     class="header2">My Messages</h1>
 <form method="GET">
-    <label for="sender">Filter by Sender:</label>
-    <select name="sender" id="sender">
+    <label class="label-form2" for="sender">Filter by Sender</label>
+    <select class="drop" name="sender" id="sender">
         
         {% for sender in senders %}
-            <option value="{{ sender.id }}">{{ sender.username }}</option>
+            <option  value="{{ sender.id }}">{{ sender.username }}</option>
         {% endfor %}
     </select>
-    <input type="submit" value="Filter">
+    <input class="search-btn2" type="submit" value="Filter">
 </form>
-
+</div>
 <ul>
 {% for message in messages %}
-    <li>
-        <div>
+    <li class="messages-list">
+        <div class="message">
             <p>From: {{ message.sender.username }}</p>
             <p>Message: {{ message.message }}</p>
             <p>Date/Time: {{ message.date_time }}</p>
@@ -41,4 +45,5 @@
     </li>
 {% endfor %}
 </ul>
+
 {% endblock %}

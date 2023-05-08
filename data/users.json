@@ -2,15 +2,15 @@
     {
         "username": "DamienRedd",
         "password": "AdminAdmin",
-        "user-bio": "My name is Damien Redd. I am working on this dating website as my capstone project for the Devmountain Python bootcamp I am graduating on May 12, 2023. I have built this website from the ground up, both frontend and backend. I have used Python, CSS, HTML, Flask, as well as some other libraries and frameworks. Please email me at DamienS.Redd@gmail.com with questions or comments.",
+        "user_bio": "My name is Damien Redd. I am working on this dating website as my capstone project for the Devmountain Python bootcamp I am graduating on May 12, 2023. I have built this website from the ground up, both frontend and backend. I have used Python, CSS, HTML, Flask, as well as some other libraries and frameworks. Please email me at DamienS.Redd@gmail.com with questions or comments.",
         "user_email": "damiens.redd@gmail.com",
         "is_female": false
     },
     {
-        "username": "Coach-McGurk",
+        "username": "CoachMcGurk",
         "password": "Coach",
-        "user_bio": "Hi, my name is Brian McGurk. I'm 37 yrs old, and I love air hockey and pickles. One time I went to Paris and ordered French Fries as a joke. No one laughed. I am so lonely, please go out with me.",
-        "user_email": "2hotMcGurk@yahoogle.com",
+        "user_bio": "Hi, my name is Brian McGurk. I'm 37 yrs old, and I love air hockey and pickles. Maybe we could go to a game or something. I'll be your all star. ",
+        "user_email": "2CoolMcGurk@yahoogle.com",
         "is_female": false
     },
     {
@@ -21,16 +21,16 @@
         "is_female": false
     },
     {
-        "username": "BuckWylde",
+        "username": "Mel",
         "password": "Shalom",
-        "user_bio": "Hey there, sweet thang! You know why they calls me Buck Wylde? 'Cause I gets Buck Wild. Lets make some magic tonight. No names, no regrets. I'm into tattoos and daddy issues. Ex-exotic dancer a plus. Not that picky. ",
-        "user_email": "Rabbi.Ezekiel.Sheinfeld@TempleBethIsrael.org",
+        "user_bio": "I am a devout Israeli, Jewish man looking for old testament love in a new testament world.", 
+        "user_email": "Eric.Melvin@TempleBethIsrael.org",
         "is_female": false
     },
     {
         "username": "Swashbucklin'Sam",
         "password": "Boat",
-        "user_bio": "Ahoy, matey. Batton the hatches and prepare for a night of salt water seduction. First, a lovely early dinner at Captain D's fried fish and po'boy stand, followed by a moonlit stroll on the beach. As the evening wanes, we can retire to my stateroom for a bit of parlay.",
+        "user_bio": "Ahoy, matey. Batton the hatches and prepare for a night of salt water fun. First, a lovely early dinner at Captain D's fried fish and po'boy stand, followed by a moonlit stroll on the beach. As the evening wanes, we can retire to my stateroom for a bit of parlay and fine cheeses.",
         "user_email": "HoldFast@USNavy.gov",
         "is_female": false
     },
@@ -44,21 +44,21 @@
     {
         "username": "LuckyLinda97",
         "password": "OhYeah!",
-        "user_bio": "Yo, Linda's my name, and gambling's my game. You feelin' lucky? Well, come over and ante up!",
-        "user_email": "Pokerintherear@Gamblers_Anonymous.org",
+        "user_bio": "Yo, Linda's my name, and gambling's my game. You feelin' like we could be winners? Well, the odds might be in your favor.",
+        "user_email": "PokerJoker@Gamblers_Anonymous.org",
         "is_female": true
     },
     {
         "username": "Crymeariver",
         "password": "BooHoo",
-        "user_bio": "I'm Bridgette Sadler. My favorite thing is watching sad 80's movies. Come cry with me, mope with me, weep and moan with me. It'll be a blast.",
+        "user_bio": "I'm Bridgette Sadler. My favorite thing is watching sad 80's movies. Come cry with me, mope with me, weep and sniffle  with me. It'll be a blast.",
         "user_email": "Why_God_Why@JonCryerFanClub.net",
         "is_female": true
     },
     {
         "username": "Debbie",
         "password": "SnackCakes",
-        "user_bio": "HoHo there, it's me, Debbie. I'm not so little anymore, but my cupcakes are still the best around. Let me be your late night snack, big guy.",
+        "user_bio": "Ding Dong. It's me Debbie. You looking for more than just a snackcake? Me too. ",
         "user_email": "Thirsty@kindahungry.com",
         "is_female": true
     }

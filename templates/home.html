@@ -17,7 +17,7 @@
             </form>
         <form>
             {% for message in get_flashed_messages() %}
-            <p>{{ message.title() }}</p>
+            <p class="flash">{{ message.title() }}</p>
             {% endfor %}
         </form>
         <div class="form-container-2">

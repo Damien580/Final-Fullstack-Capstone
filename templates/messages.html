@@ -38,9 +38,9 @@
 {% for message in messages %}
     <li class="messages-list">
         <div class="message">
-            <p>From: {{ message.sender.username }}</p>
-            <p>Message: {{ message.message }}</p>
-            <p>Date/Time: {{ message.date_time }}</p>
+            <p class="flash">From: {{ message.sender.username }}</p>
+            <p class="flash">Message: {{ message.message }}</p>
+            <p class="flash">Date/Time: {{ message.date_time }}</p>
         </div>
     </li>
 {% endfor %}

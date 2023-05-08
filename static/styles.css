@@ -68,7 +68,7 @@ header{
 .tagline{
     display: flex;
     justify-content:center ;
-    font-size: 200px;
+    font-size: 150px;
     font-family: Late Night;
     color: #b5ffce;
     animation: glow 1s ease-in-out infinite alternate;
@@ -379,6 +379,7 @@ header{
     color: #b5ffce;
     animation: glow 1s ease-in-out infinite alternate;
     margin-top: 45px;
+    margin-left: 25px;
 }
 @keyframes glow {
     from {
@@ -428,6 +429,7 @@ header{
     font-family: Late Night;
     color: #b5ffce;
     animation: glow 1s ease-in-out infinite alternate;
+    margin-left: 25px;
 }
 @keyframes glow {
     from {

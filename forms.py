@@ -2,7 +2,6 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField, BooleanField, HiddenField, PasswordField, DateTimeField, SelectField
 from wtforms.validators import DataRequired, Length
 from wtforms.fields import RadioField
-from datetime import datetime
 
 class LoginForm(FlaskForm):
     username = StringField("Username")

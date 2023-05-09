@@ -4,16 +4,13 @@ from flask_uploads import UploadSet, IMAGES, configure_uploads
 from forms import NewUserForm, SearchForm, AddPhotoForm, LoginForm, MessageForm
 from model import User, connect_to_db, db, Picture, Message
 import crud
-
-UPLOAD_FOLDER = '/Users/damienredd/School/DevMountain/Python F35/Capstone/static/pics'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+import os
+import uuid
 
 app = Flask(__name__)
 app.secret_key = "DatingAppForMyCapstone"
-app.config['UPLOADED_PHOTOS_DEST'] = 'static/pics'
 
-photos = UploadSet('photos', IMAGES)
-configure_uploads(app, photos)
+upload_folder = "/Users/damienredd/School/DevMountain/Python F35/Capstone/static/pics/"
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -86,12 +83,16 @@ def profile():
 
     if add_photo_form.validate_on_submit():
         pic_url = add_photo_form.url.data
+        filename, ext = os.path.splitext(pic_url.filename)
+        new_filename = uuid.uuid4().hex + ext
+        pic_url.save(os.path.join(upload_folder, new_filename))
+        
         comment = add_photo_form.comment.data
         user_id = current_user.id 
-        new_pic = Picture(pic_url=pic_url, comment=comment, user_id=user_id)
+        
+        new_pic = Picture(pic_url=new_filename, comment=comment, user_id=user_id)
         db.session.add(new_pic)
         db.session.commit()
-        add_photo_form.process() 
         
         if new_pic:
             flash("Picture added!")

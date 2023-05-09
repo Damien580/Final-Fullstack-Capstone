@@ -19,9 +19,10 @@ class NewUserForm(FlaskForm):
     
 
 class AddPhotoForm(FlaskForm):
-    url = StringField('Picture Address', validators=[DataRequired()])
+    url = FileField('Picture Address')
     comment = TextAreaField('Comments')
-    user_id = HiddenField()  
+    user_id = HiddenField()
+    
     submit = SubmitField('Add')
     
 class SearchForm(FlaskForm):

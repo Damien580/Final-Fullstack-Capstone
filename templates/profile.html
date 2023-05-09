@@ -3,15 +3,18 @@
 
 {% block body %}
 <body class="profile-body"></body>
+
 <h2 class="name">Pictures:</h2>
+
 {% for message in get_flashed_messages() %}
 <p class="flash">{{ message }}</p>
 {% endfor %}
+
     {% if pictures %}
     <ul class="pic-list">
         {% for pic in pictures %}
         <li class="pics">
-            <img class="pic" src="{{ pic.pic_url }}" alt="Picture">
+            <img class="pic" src="{{ url_for('static', filename='pics/' + pic.pic_url) }}" alt="Picture">
             <p class="pic-comment">{{ pic.comment }}</p>
             <form method="POST" action="{{ url_for('delete_picture', pic_id=pic.pic_id) }}">
                 <input type="hidden" name="pic_id" value="{{ pic.pic_id }}">
@@ -21,8 +24,10 @@
         {% endfor %}
     </ul>
     {% endif %}
+
     <p class="add-name">Add A Picture:</p>
-    <form class="pic-add" method="POST" action="{{ url_for('profile') }}">
+
+    <form class="pic-add" method="POST" action="{{ url_for('profile') }}" enctype="multipart/form-data">
         {{ add_photo_form.hidden_tag() }}
         {{ add_photo_form.url.label(class="pic-form") }} {{ add_photo_form.url(class="pic-form-box-address") }}
         {{ add_photo_form.comment.label(class="pic-form") }} {{ add_photo_form.comment(class="pic-form-box-comment") }}
@@ -31,6 +36,3 @@
     
     {% endblock %}
     
-    {% block foot %}
-    
-    {% endblock %}

@@ -13,7 +13,7 @@
         {% for pic in pictures %}
     <ul class="pic-list">
         <li>
-            <img class="pic" src="{{ pic.pic_url }}" alt="Picture">
+            <img class="pic" src="{{ url_for('static', filename='pics/' + pic.pic_url) }}" alt="Picture">
             <p class="pic-comment-user">{{ pic.comment }}</p>
         </li>
     </ul>

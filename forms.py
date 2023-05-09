@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, SubmitField, TextAreaField, BooleanField, HiddenField, PasswordField, DateTimeField, SelectField
+from wtforms import StringField, SubmitField, TextAreaField, BooleanField, HiddenField, PasswordField, DateTimeField, SelectField, FileField
 from wtforms.validators import DataRequired, Length
 from wtforms.fields import RadioField
 
@@ -19,7 +19,7 @@ class NewUserForm(FlaskForm):
     
 
 class AddPhotoForm(FlaskForm):
-    url = FileField('Picture Address', validators=[DataRequired()])
+    url = StringField('Picture Address', validators=[DataRequired()])
     comment = TextAreaField('Comments')
     user_id = HiddenField()  
     submit = SubmitField('Add')

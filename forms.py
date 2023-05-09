@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, SubmitField, TextAreaField, BooleanField, HiddenField, PasswordField, DateTimeField, SelectField
 from wtforms.validators import DataRequired, Length
 from wtforms.fields import RadioField
@@ -17,11 +18,11 @@ class NewUserForm(FlaskForm):
     submit = SubmitField('Create')
     
 
-class AddPhotoForm(FlaskForm):
-    url = StringField('Picture Address', validators=[DataRequired()])
-    comment = TextAreaField('Comments')
-    user_id = HiddenField()  
-    submit = SubmitField('Add')
+# class AddPhotoForm(FlaskForm):
+#     url = FileField('Picture Address', validators=[DataRequired()])
+#     comment = TextAreaField('Comments')
+#     user_id = HiddenField()  
+#     submit = SubmitField('Add')
     
 class SearchForm(FlaskForm):
     is_female = RadioField('I am searching for a', choices=[('True', 'Female'), ('False', 'Male')], validators=[DataRequired()])

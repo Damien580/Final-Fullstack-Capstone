@@ -1,13 +1,19 @@
 from flask import Flask, render_template, request, flash, session, redirect, url_for
-from model import User, connect_to_db, db, Picture, Message
-from forms import NewUserForm, SearchForm, AddPhotoForm, LoginForm, MessageForm
 from flask_login import LoginManager, login_user, login_required, current_user, logout_user
-
+from flask_uploads import UploadSet, IMAGES, configure_uploads
+from forms import NewUserForm, SearchForm, AddPhotoForm, LoginForm, MessageForm
+from model import User, connect_to_db, db, Picture, Message
 import crud
 
+UPLOAD_FOLDER = '/Users/damienredd/School/DevMountain/Python F35/Capstone/static/pics'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app = Flask(__name__)
 app.secret_key = "DatingAppForMyCapstone"
+app.config['UPLOADED_PHOTOS_DEST'] = 'static/pics'
+
+photos = UploadSet('photos', IMAGES)
+configure_uploads(app, photos)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -71,29 +77,29 @@ def logout():
     return redirect("/")
 
     
-@app.route("/profile", methods=["GET", "POST"])
-@login_required
-def profile():
-    add_photo_form = AddPhotoForm()
-    profile = current_user
-    pictures = crud.get_user_pics(profile.id)
-    
-    
-    if add_photo_form.validate_on_submit():
-        pic_url = add_photo_form.url.data
-        comment = add_photo_form.comment.data
-        user_id = current_user.id 
-        new_pic = Picture(pic_url=pic_url, comment=comment, user_id=user_id)
-        db.session.add(new_pic)
-        db.session.commit()
-        add_photo_form.process() 
+# @app.route("/profile", methods=["GET", "POST"])
+# @login_required
+# def profile():
+#     return render_template("profile.html")
+#     add_photo_form = AddPhotoForm()
+#     profile = current_user
+#     pictures = crud.get_user_pics(profile.id)
+
+    # if add_photo_form.validate_on_submit():
+    #     pic_url = add_photo_form.url.data
+    #     comment = add_photo_form.comment.data
+    #     user_id = current_user.id 
+    #     new_pic = Picture(pic_url=pic_url, comment=comment, user_id=user_id)
+    #     db.session.add(new_pic)
+    #     db.session.commit()
+    #     add_photo_form.process() 
         
-        if new_pic:
-            flash("Picture added!")
-            return redirect(url_for("profile"))
-        else:
-            flash("Picture not added!!!")
-    return render_template("profile.html", profile=profile, pictures=pictures, add_photo_form=add_photo_form)
+    #     if new_pic:
+    #         flash("Picture added!")
+    #         return redirect(url_for("profile"))
+    #     else:
+    #         flash("Picture not added!!!")
+    # return render_template("profile.html", profile=profile, pictures=pictures, add_photo_form=add_photo_form)
 
 @app.route("/users")
 @login_required

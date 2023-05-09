@@ -18,11 +18,11 @@ class NewUserForm(FlaskForm):
     submit = SubmitField('Create')
     
 
-# class AddPhotoForm(FlaskForm):
-#     url = FileField('Picture Address', validators=[DataRequired()])
-#     comment = TextAreaField('Comments')
-#     user_id = HiddenField()  
-#     submit = SubmitField('Add')
+class AddPhotoForm(FlaskForm):
+    url = FileField('Picture Address', validators=[DataRequired()])
+    comment = TextAreaField('Comments')
+    user_id = HiddenField()  
+    submit = SubmitField('Add')
     
 class SearchForm(FlaskForm):
     is_female = RadioField('I am searching for a', choices=[('True', 'Female'), ('False', 'Male')], validators=[DataRequired()])

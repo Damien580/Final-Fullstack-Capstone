@@ -24,16 +24,16 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return f"<User: ID={self.id} Username={self.username} Email={self.user_email}>"
 
-# class Picture(db.Model):
-#     __tablename__ = "pictures"
+class Picture(db.Model):
+    __tablename__ = "pictures"
     
-#     pic_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-#     pic_url = db.Column(db.String, nullable=False)
-#     comment = db.Column(db.Text)
-#     user_id= db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    pic_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    pic_url = db.Column(db.String, nullable=False)
+    comment = db.Column(db.Text)
+    user_id= db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     
-#     def __repr__(self):
-#         return f"<Picture: pic_id={self.pic_id}"
+    def __repr__(self):
+        return f"<Picture: pic_id={self.pic_id}"
     
 
 class Message(db.Model):

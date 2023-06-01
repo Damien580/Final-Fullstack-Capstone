@@ -12,14 +12,17 @@
             {{ login_form.password(class="home-field") }}<br><br>
             {{ login_form.submit(value="Log In", class="btn-submit") }}
         </form>   
-            <form class="logout-button" action="/logout">
-                <button class="btn-logout" type="submit">Log Out</button>
-            </form>
+
+        <form class="logout-button" action="/logout">
+            <button class="btn-logout" type="submit">Log Out</button>
+        </form>
+
         <form>
             {% for message in get_flashed_messages() %}
             <p class="flash" id="log">{{ message.title() }}</p>
             {% endfor %}
         </form>
+        
         <div class="form-container-2">
             <p class="acct-create">Create Account:</p>
             <form action="{{ url_for('new_user') }}" method="POST">
